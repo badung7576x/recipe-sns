@@ -1,0 +1,158 @@
+/*
+* ===============================
+* PC全コンテンツ検索用
+* グローバル検索と左サイドの検索パネル
+* ===============================
+*/
+.horizontal-block {
+    width: 492px;
+    height: 26px;
+    border: 1px solid #AF8728;
+    border-radius: 4px;
+    padding: 1px;
+    vertical-align: top;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#headerkeyword {
+    height: 16px;
+    padding: 6px;
+    width: 341px;
+    margin:-2px 0 0 -1px;
+    border: 1px #AF8728 solid;
+    border-right: 0;
+    border-radius: 0;
+}
+#type {
+    height: 30px;
+    width: 117px;
+    padding-left: 10px;
+    display: inline-block;
+    border: 1px solid #AF8728;
+    border-right: 0;
+    border-radius: 4px;
+    margin: -2px -5px 0 -5px;
+    vertical-align: top;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url(../images/common/select_down.png), -webkit-linear-gradient(top, #fff 0%, #efebe1 100%),
+    linear-gradient(to bottom, #fff 0%, #efebe1 100%);
+    background-repeat:no-repeat,no-repeat, no-repeat;
+    background-position:  100px 11px, left,left;
+    background-size: 7px, 100%, 100%;
+    color: #630;
+    font-size: 12px;
+    font-weight:bold;
+}
+
+#type::-ms-expand { /* IE10以降用:SELECTの下矢印を出さない */
+    display: none;
+}
+
+#global-search-submit {
+    vertical-align: top;
+    position: absolute;
+    top:-1px;
+    right:-1px;
+}
+
+.checkHidden, .radioHidden {
+    display: none;
+}
+
+.leftSrch .keyword {
+    padding: 5px 10px;
+}
+
+.leftSrch .cate2 {
+    padding: 5px 10px;
+}
+
+.leftSrch .srchSubmit {
+    position: relative;
+    padding: 0;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.leftSrch .srchSubmit a.btn-inner {
+    display: block;
+    width: 100%;
+    line-height: 2.5em;
+    padding: 0;
+}
+
+.leftSrch .keyword input[type=text] {
+    width: 90%;
+    margin: 0 2px 4px 0;
+}
+
+.leftSrch .cateTtl.blockTtl {
+    background-color: #5a320a;
+    color: #fff;
+    padding: 3px 0;
+}
+
+.leftSrch h2 label {
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+.leftSrch h2 .radioHidden + label {
+    padding: 7px 7px 7px 24px;
+    background-position: 0 6px;
+    background-size:;
+    margin-left: 7px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.leftSrch h2 .radioHidden:checked + label {
+    background-position: 0 -18px;
+}
+
+.leftSrch .cate2 .radioHidden + label {
+    margin-left: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    cursor: pointer;
+    background-position: 0 3px;
+    display: block;
+}
+
+.leftSrch .cate2 .radioHidden:checked + label {
+    margin-left: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-position: 0 -21px;
+}
+
+.leftSrch .cate2 .checkHidden + label {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: -22px;
+    margin-left: 0;
+    padding-left: 22px;
+    cursor: pointer;
+    background-position: 0 3px;
+    display: inline-block;
+    width: 100%;
+}
+
+.leftSrch .cate2 .checkHidden:checked + label {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: -22px;
+    margin-left: 0;
+    padding-left: 22px;
+    background-position: 0 -21px;
+}
+
+.leftSrch .cateTtl.blockTtl.nolink {
+    padding: 10px;
+}
