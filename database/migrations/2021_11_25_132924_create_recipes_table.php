@@ -14,7 +14,7 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->increments('id')->nullable(false);
+            $table->id();
             $table->string('name');
             $table->string('note');
             $table->integer('user_id')->unsigned();
