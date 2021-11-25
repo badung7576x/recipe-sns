@@ -22,8 +22,6 @@ class CreateRecipesTable extends Migration
             $table->string('image');
             $table->integer('like');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
