@@ -21,8 +21,8 @@
         </div>
         <div class="float-R">
             <ul class="rightNavArea">
-                <li class="hIconFeature"><a href="{{ route('signup') }}"><i class="fa-solid fa-user-plus"></i>無料会員登録</a></li>
-                <li class="hIconLogin"><a href="{{ route('login') }}"><i class="fa-solid fa-arrow-right-to-bracket"></i>ログイン</a></li>
+                <li class="hIconFeature"><a href="{{ route('signup') }}">無料会員登録</a></li>
+                <li class="hIconLogin"><a href="{{ route('login') }}">ログイン</a></li>
             </ul>
         </div>
     </article>
