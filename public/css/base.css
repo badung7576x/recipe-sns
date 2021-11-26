@@ -3670,8 +3670,6 @@ a.registerRed {
 header {
     background: #fff;
     width: 100%;
-    height: 136px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .2)
 }
 
 header .hNavArea {
@@ -3693,11 +3691,11 @@ header .hNavArea .logo a {
     float: left;
     display: block;
     white-space: nowrap;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 header .hNavArea .searchArea {
-    margin-top: 20px;
+    margin-top: 10px;
     float: left
 }
 
@@ -3776,7 +3774,7 @@ header .hNavArea .rightNavArea .rightNavBase a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
@@ -3793,7 +3791,7 @@ header .hNavArea .rightNavArea .hIconFt a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
@@ -3813,7 +3811,7 @@ header .hNavArea .rightNavArea .hIconPost a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
@@ -3834,7 +3832,7 @@ header .hNavArea .rightNavArea .hIconRecipe a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
@@ -3855,7 +3853,7 @@ header .hNavArea .rightNavArea .hIconLogin a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
@@ -3876,7 +3874,7 @@ header .hNavArea .rightNavArea .hIconSecret a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
@@ -3983,7 +3981,7 @@ header .hNavArea .rightNavArea .hIconFeature a {
     font-weight: 700;
     width: 90px;
     height: 30px;
-    padding-top: 60px;
+    padding-top: 20px;
     display: block
 }
 
