@@ -2635,7 +2635,6 @@ a.registerRed {
 }
 
 .pickUP .thmbList .detail .contest {
-    background: url(../images/common/contest_icon.png) no-repeat;
     padding-left: 25px
 }
 
@@ -3673,7 +3672,6 @@ a.registerRed {
 }
 
 .sideWrap .contestAwardIcon {
-    background: url(../images/common/contest_icon.png) no-repeat;
     background-size: 10px;
     padding-left: 16px
 }

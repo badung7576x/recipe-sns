@@ -2629,7 +2629,6 @@ a.registerRed {
 }
 
 .pickUP .thmbList .detail .contest {
-    background: url(../images/common/contest_icon.png) no-repeat;
     padding-left: 25px
 }
 
@@ -3662,7 +3661,6 @@ a.registerRed {
 }
 
 .sideWrap .contestAwardIcon {
-    background: url(../images/common/contest_icon.png) no-repeat;
     background-size: 10px;
     padding-left: 16px
 }
@@ -3709,7 +3707,6 @@ header .hNavArea .searchArea input[type=text] {
 }
 
 header .hNavArea .searchArea input[type=submit] {
-    background: url(../images/common/h_parts.png) no-repeat 0 -800px;
     width: 30px;
     height: 30px;
     border: 0
@@ -3781,7 +3778,6 @@ header .hNavArea .rightNavArea .rightNavBase a {
 header .hNavArea .rightNavArea .hIconFt {
     float: right;
     border-right: 1px solid #d2c8be;
-    background: url(../images/common/h_parts.png) no-repeat 0 0
 }
 
 header .hNavArea .rightNavArea .hIconFt a {
@@ -3801,7 +3797,6 @@ header .hNavArea .rightNavArea .hIconFt.active, header .hNavArea .rightNavArea .
 header .hNavArea .rightNavArea .hIconPost {
     float: right;
     border-right: 1px solid #d2c8be;
-    background: url(../images/common/h_parts.png) no-repeat 0 -1365px
 }
 
 header .hNavArea .rightNavArea .hIconPost a {
@@ -3822,7 +3817,6 @@ header .hNavArea .rightNavArea .hIconPost.active, header .hNavArea .rightNavArea
 header .hNavArea .rightNavArea .hIconRecipe {
     float: right;
     border-right: 1px solid #d2c8be;
-    background: url(../images/common/h_parts.png) no-repeat 0 -400px
 }
 
 header .hNavArea .rightNavArea .hIconRecipe a {
@@ -3843,7 +3837,6 @@ header .hNavArea .rightNavArea .hIconRecipe.active, header .hNavArea .rightNavAr
 header .hNavArea .rightNavArea .hIconLogin {
     float: right;
     border-right: 1px solid #d2c8be;
-    background: url(../images/common/h_parts.png) no-repeat 0 -200px
 }
 
 header .hNavArea .rightNavArea .hIconLogin a {
@@ -3864,7 +3857,6 @@ header .hNavArea .rightNavArea .hIconLogin.active, header .hNavArea .rightNavAre
 header .hNavArea .rightNavArea .hIconSecret {
     float: right;
     border-right: 1px solid #d2c8be;
-    background: url(../images/common/h_parts.png) no-repeat 0 -840px
 }
 
 header .hNavArea .rightNavArea .hIconSecret a {
@@ -3887,7 +3879,7 @@ header .hNavArea .rightNavArea .loginUsr {
     border-right: 1px solid #d2c8be;
     background: 0 0;
     position: relative;
-    background: url(../images/common/h_parts.png) no-repeat 0 -1040px
+    z-index: 100;
 }
 
 header .hNavArea .rightNavArea .loginUsr a {
@@ -3895,28 +3887,15 @@ header .hNavArea .rightNavArea .loginUsr a {
     color: #916E28;
     text-align: center;
     font-weight: 700;
-    width: 82px;
-    height: 68px;
-    padding: 22px 4px 0 4px;
+    padding: 20px 10px 0 10px;
+    height: 30px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     display: block
 }
 
-header .hNavArea .rightNavArea .loginUsr a.active, header .hNavArea .rightNavArea .loginUsr a:hover {
-    background: url(../images/common/h_parts.png) 0 -1140px
-}
-
-header .hNavArea .rightNavArea .loginUsr img {
-    width: 28px;
-    height: 28px;
-    display: block;
-    margin: 0 auto 12px auto
-}
-
 header .hNavArea .rightNavArea .loginUsr ul {
-    display: none;
     background: #af8728;
     border-left: 1px solid #956D45;
     border-right: 1px solid #956D45;
@@ -3924,8 +3903,13 @@ header .hNavArea .rightNavArea .loginUsr ul {
     z-index: 10
 }
 
+.d-none {
+    display: none;
+}
+
 header .hNavArea .rightNavArea .loginUsr ul a {
     height: 30px;
+    width: 120px;
     line-height: 30px;
     padding: 0 8px;
     font-size: 1rem;
@@ -3952,7 +3936,7 @@ header .hNavArea .rightNavArea .hIconPost ul {
 
 header .hNavArea .rightNavArea .hIconPost ul a {
     height: 30px;
-    width: 73px;
+    width: 150px;
     line-height: 30px;
     padding: 0 8px;
     font-size: 1rem;
@@ -4004,10 +3988,6 @@ header .gNav ul {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-}
-
-header .gNav ul li {
-
 }
 
 header .gNav ul li.category {

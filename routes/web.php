@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('pages.homepage.index'); })->name('index');
-Route::get('/recipe', function () { return view('pages.recipe.index'); })->name('index');
-Route::get('/profile', function () { return view('pages.profile.index'); })->name('profile');
-Route::get('/login', function () { return view('pages.auth.login'); })->name('login');
-Route::get('/signup', function () { return view('pages.auth.signup'); })->name('signup');
-Route::get('/users/{id}', function () { return view('pages.user.index'); })->name('user.index');
+Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function() {
+    Route::get('/signup', 'RegisterController@index')->name('signup');
+    Route::post('/signup', 'RegisterController@create')->name('signup-post');
+    
+    Route::get('/login', 'LoginController@index')->name('login');
+    Route::post('/login', 'LoginController@login')->name('login-post');
+    Route::get('/logout', 'LoginController@logout')->name('logout');
+    
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/recipe', function () { return view('pages.recipe.index'); })->name('recipe');
+    Route::get('/profile', function () { return view('pages.profile.index'); })->name('profile');
+    Route::get('/users', function () { return view('pages.user.index'); })->name('user.index');
+});

@@ -2662,7 +2662,6 @@ a.registerRed {
 }
 
 .pickUP .thmbList .detail .contest {
-    background: url(../images/common/contest_icon.png) no-repeat;
     padding-left: 25px
 }
 
@@ -3695,7 +3694,6 @@ a.registerRed {
 }
 
 .sideWrap .contestAwardIcon {
-    background: url(../images/common/contest_icon.png) no-repeat;
     background-size: 10px;
     padding-left: 16px
 }
@@ -4840,13 +4838,27 @@ footer .footContWrap .copy {
 }
 
 .ppBody .ppWrap .ppTtl {
-    /* border-top: 3px solid #5A320A;
-    border-bottom: 1px solid #D2C8BE; */
     color: #AF8728;
     font-weight: 700;
     font-size: 1.5rem;
     padding: 8px 0 8px 36px;
     margin-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.ppBody .ppWrap .message-error {
+    color: red;
+    font-size: 1.5rem;
+    padding: 8px 0 8px 36px;
+    position: relative;
+    text-align: center;
+}
+
+.ppBody .ppWrap .message-success {
+    color: green;
+    font-size: 1.5rem;
+    padding: 8px 0 8px 36px;
     position: relative;
     text-align: center;
 }

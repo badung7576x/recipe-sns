@@ -29,7 +29,6 @@
     width: 117px;
     padding-left: 10px;
     display: inline-block;
-    border: 1px solid #AF8728;
     border-right: 0;
     border-radius: 4px;
     margin: -2px -5px 0 -5px;
@@ -37,8 +36,6 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url(../images/common/select_down.png), -webkit-linear-gradient(top, #fff 0%, #efebe1 100%),
-    linear-gradient(to bottom, #fff 0%, #efebe1 100%);
     background-repeat:no-repeat,no-repeat, no-repeat;
     background-position:  100px 11px, left,left;
     background-size: 7px, 100%, 100%;
