@@ -18,3 +18,4 @@ Route::get('/recipe', function () { return view('pages.recipe.index'); })->name(
 Route::get('/profile', function () { return view('pages.profile.index'); })->name('profile');
 Route::get('/login', function () { return view('pages.auth.login'); })->name('login');
 Route::get('/signup', function () { return view('pages.auth.signup'); })->name('signup');
+Route::get('/users/{id}', function () { return view('pages.user.index'); })->name('user.index');
