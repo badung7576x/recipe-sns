@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="{{ asset('css/cs_search.css') }}">
     <link rel="stylesheet" href="{{ asset('css/column.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('css/user.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('css/user_recipe.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('css/recipes-view.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('css/popup.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/swiper.min.js') }}"></script>
