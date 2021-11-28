@@ -4847,7 +4847,7 @@ footer .footContWrap .copy {
     color: #AF8728;
     font-weight: 700;
     font-size: 1.5rem;
-    padding: 8px 0 8px 36px;
+    /* padding: 8px 0 8px 36px; */
     margin-top: 20px;
     position: relative;
     text-align: center;
@@ -4905,6 +4905,8 @@ footer .footContWrap .copy {
 }
 
 .ppBody .ppWrap .ppCont .subTtl {
+    display: flex;
+    justify-content: center;
     color: #5A320A;
     font-weight: 700;
     border-bottom: 1px dotted #D2C8BE;
