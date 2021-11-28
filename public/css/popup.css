@@ -302,7 +302,8 @@ input[type=submit] {
 }
 
 .triangleLink {
-    display: inline-block
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .triangleLink a {
@@ -4169,9 +4170,10 @@ a.registerRed {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
     background: #5a320a;
     width: 100%;
-    padding-bottom: 40px
 }
 
 footer .footContWrap {
@@ -4179,7 +4181,8 @@ footer .footContWrap {
     margin: 0 auto;
     font-size: 1.2rem;
     text-align: center;
-    padding-top: 20px
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 footer .footContWrap .triangleLink a {
@@ -4194,7 +4197,7 @@ footer .footContWrap .triangleLink:before {
 
 footer .footContWrap .copy {
     color: #fff;
-    margin-top: 36px
+    margin: 0 !important;
 }
 
 @media only screen and (max-width: 736px) {
@@ -4759,6 +4762,9 @@ footer .footContWrap .copy {
 }
 
 .ppBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: 0 0;
     min-width: 550px;
     margin: 0px;
@@ -4868,7 +4874,8 @@ footer .footContWrap .copy {
 }
 
 .ppBody .ppWrap .ppTtl.login {
-    background: url(../images/common/icon_popup.png) no-repeat 10px -32px
+    background: url(../images/common/icon_popup.png) no-repeat 10px -32px;
+    font-size: 3.2rem !important;
 }
 
 .ppBody .ppWrap .ppTtl.review {
