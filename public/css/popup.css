@@ -4939,7 +4939,8 @@ footer .footContWrap .copy {
     vertical-align: top
 }
 
-.ppBody .ppWrap .loginTable input[type=email], .ppBody .ppWrap .loginTable input[type=password] {
+.ppBody .ppWrap .loginTable input[type=email], .ppBody .ppWrap .loginTable input[type=password],
+.ppBody .ppWrap .loginTable input[type=text] {
     width: 265px;
     height: 10px;
     padding: 8px;

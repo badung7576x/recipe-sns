@@ -8,12 +8,23 @@
         @error('common')
           <p class="message-error">{{ $message }}</p>
         @enderror
-        @if(session()->has('success'))
+        @if (session()->has('success'))
           <p class="message-success">{{ session('success') }}</p>
         @endif
         <div class="ppCont">
           <table class="loginTable">
             <tbody>
+              <tr>
+                <th>お名前</th>
+                <td>
+                  <div class="input password required">
+                    <input name="fullname" type="text" value="{{ old('fullname', '') }}">
+                    @error('fullname')
+                      <p style="color:red;">{{ $message }}</p>
+                    @enderror
+                  </div>
+                </td>
+              </tr>
               <tr>
                 <th>メールアドレス</th>
                 <td>

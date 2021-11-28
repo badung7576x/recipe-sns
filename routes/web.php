@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function() {
-    Route::get('/signup', 'RegisterController@index')->name('signup');
-    Route::post('/signup', 'RegisterController@create')->name('signup-post');
+    Route::get('signup', 'RegisterController@index')->name('signup');
+    Route::post('signup', 'RegisterController@create')->name('signup-post');
     
-    Route::get('/login', 'LoginController@index')->name('login');
-    Route::post('/login', 'LoginController@login')->name('login-post');
-    Route::get('/logout', 'LoginController@logout')->name('logout');
+    Route::get('login', 'LoginController@index')->name('login');
+    Route::post('login', 'LoginController@login')->name('login-post');
+    Route::get('logout', 'LoginController@logout')->name('logout');
     
-    Route::get('/', 'HomeController@index')->name('index');
-    Route::get('/recipe', function () { return view('pages.recipe.index'); })->name('recipe');
-    Route::get('/profile', function () { return view('pages.profile.index'); })->name('profile');
-    Route::get('/users', function () { return view('pages.user.index'); })->name('user.index');
+    Route::get('', 'HomeController@index')->name('index');
+    Route::get('recipe', function () { return view('pages.recipe.index'); })->name('recipe');
+
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('profile', 'ProfileController@index')->name('profile');
+    });
 });

@@ -5499,7 +5499,6 @@ footer .footContWrap .copy {
 }
 
 .usrColWrap {
-    width: 740px;
     background: url(../images/user/background.png) repeat;
     padding: 2px;
     margin-bottom: 30px
@@ -6104,7 +6103,8 @@ footer .footContWrap .copy {
 }
 
 .recipe .recipeMainArea.thmbList .detail .ingredientArea {
-    margin-top: 20px
+    display: flex;
+    justify-content: space-between;
 }
 
 .recipe .recipeMainArea.thmbList .detail .ingredientArea .ingredient {
@@ -6633,7 +6633,6 @@ footer .footContWrap .copy {
 }
 
 .otherRecipeList .ttl.review h2 {
-    padding-left: 24px;
     background: url(../images/user/recipe/icon.png) no-repeat 0 -274px
 }
 
@@ -6774,7 +6773,6 @@ footer .footContWrap .copy {
 }
 
 .otherRecipeList--recipe .changeBox .reviewArea textarea {
-    width: 660px;
     resize: none
 }
 
@@ -6804,7 +6802,7 @@ footer .footContWrap .copy {
 .otherRecipeList .changeBox .reviewSentArea .reviews .thmbList {
     clear: both;
     zoom: 1;
-    float: right;
+    /* float: right; */
     padding: 10px 15px 0 15px
 }
 
@@ -6833,15 +6831,15 @@ footer .footContWrap .copy {
 }
 
 .otherRecipeList .changeBox .reviewSentArea .reviews .thmbList .detail .daily, .otherRecipeList .changeBox .reviewSentArea .reviews .thmbList .detail .dayly {
-    float: right
+    /* float: right */
 }
 
 .otherRecipeList .changeBox .reviewSentArea .reviews .review-first {
-    background: #f5f5f0
+    /* background: #f5f5f0 */
 }
 
 .otherRecipeList .changeBox .reviewSentArea .reviews .review-first .detail {
-    max-width: 624px
+    /* max-width: 624px */
 }
 
 .otherRecipeList .changeBox .reviewSentArea .reviews .review-first .detail .reviewTxt {

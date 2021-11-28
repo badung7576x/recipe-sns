@@ -30,11 +30,11 @@
                 $('.myMenu').toggleClass('d-none');
               }
             </script>
-            <a href="javascript:void();" onclick="showPopup()"> {{ $user->username }}</a>
+            <a href="javascript:void();" onclick="showPopup()"> {{ $user->fullname }}</a>
 
             <ul class="myMenu d-none">
               <li>
-                <a href="#">プロフィール</a>
+                <a href="{{ route('profile') }}">プロフィール</a>
               </li>
               <li>
                 <a href="{{ route('logout') }}">ログアウト</a>

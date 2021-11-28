@@ -24,6 +24,7 @@ class RegisterUserRequest extends FormRequest
     public function rules()
     {
         return [
+            'fullname' => 'required|string|max:255',
             'email' => 'required|email',
             'password' => 'required|min:6',
             're_password' => 'required|same:password'
@@ -33,6 +34,7 @@ class RegisterUserRequest extends FormRequest
     public function attributes()
     {
         return [
+            'fullname' => 'お名前',
             'email' => 'メールアドレス',
             'password' => 'パスワード',
             're_password' => '確認用パスワード'
