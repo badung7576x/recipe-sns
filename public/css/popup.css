@@ -1469,7 +1469,8 @@ a.registerRed {
     line-height: 24px;
     margin-top: 0;
     border: none;
-    padding-top: 0
+    padding-top: 0;
+    margin-bottom: 81px;
 }
 
 .pager-noBorder a {
@@ -1491,6 +1492,10 @@ a.registerRed {
 
 .pager-noBorder a:last-child {
     margin-right: 0
+}
+
+article#recipeList {
+    width: 800px;
 }
 
 .pankuzuWrap {
