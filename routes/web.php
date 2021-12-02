@@ -22,10 +22,11 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::get('logout', 'LoginController@logout')->name('logout');
     
     Route::get('', 'HomeController@index')->name('index');
-    Route::get('recipe', function () { return view('pages.recipe.index'); })->name('recipe');
+    Route::get('recipe/{recipe}', 'RecipeController@index')->name('recipe');
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('profile');
+        
     });
 
     Route::get('recipe-list', function () { return view('pages.recipe.list'); })->name('recipe-list');

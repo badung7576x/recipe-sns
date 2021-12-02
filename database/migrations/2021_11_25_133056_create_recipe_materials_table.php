@@ -17,7 +17,8 @@ class CreateRecipeMaterialsTable extends Migration
             $table->id();
             $table->integer('recipe_id')->unsigned();
             $table->string('name');
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable();
+            $table->string('unit')->nullable();
             $table->timestamps();
         });
     }

@@ -34,34 +34,34 @@
           <div class="p-top__slider">
             <div class="swiper-container mySwiper c-slider-seasonal">
               <ul class="swiper-wrapper">
-                @for ($i = 0; $i < 10; $i++)
+                @foreach ($recipesThisWeek as $recipe)
                   <li class="swiper-slide">
                     <div class="c-slider-seasonal__image">
                       <div class="c-slider-seasonal__st">
-                        <span class="recipe-time"><i class="icon-timer"></i>5分</span>
-                        <span class="recipe-favorite"><i class="icon-heart"></i>229</span>
+                        <span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span>
+                        <span class="recipe-favorite"><i class="icon-heart"></i>{{ $recipe->like }}</span>
                       </div>
                       <a class="recipe-image" href="#">
-                        <img src="{{ asset('images/common/banhmi.jpg') }}" height="auto" width="300" > </a>
+                        <img src="{{ $recipe->image }}" height="auto" width="300"> </a>
                       <a class="user-name" href="#">
-                        <img src="{{ asset('images/common/avatar.png') }}" width="26" height="26" class="user-icon" >名前</a>
+                        <img src="{{ asset('images/common/avatar.png') }}" width="26" height="26" class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
                     </div>
                     <div class="c-slider-seasonal__cont">
                       <div class="recipe-week">
                         <p>
-                          <span class="day">29</span><br>
-                          <span class="dow">mon</span>
+                          <span class="day">{{ \Carbon\Carbon::parse($recipe->created_at)->day }}</span><br>
+                          <span class="dow">{{ \Carbon\Carbon::parse($recipe->created_at)->format('M') }}</span>
                         </p>
                       </div>
 
                       <div class="c-slider-seasonal__info">
-                        <a class="recipe-title" href="{{ route('recipe') }}">
-                          <h3 class="recipe-title">ベトナムのパン（バインミー）</h3>
+                        <a class="recipe-title" href="{{ route('recipe', $recipe->id) }}">
+                          <h3 class="recipe-title">{{ $recipe->name }}</h3>
                         </a>
                       </div>
                     </div>
                   </li>
-                @endfor
+                @endforeach
               </ul>
             </div>
             <div class="swiper-button-next swiper-button-next--seasonal">
@@ -82,59 +82,26 @@
             <a href="#" class="c-readmore">新着レシピ一覧へ</a>
           </div>
           <ul class="c-top-list--recipe">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach($newRecipes as $recipe)
               <li>
                 <div class="c-top-list--recipe__img-wrap">
                   <a href="#">
-                    <img src="{{ asset('images/common/banhmi.jpg') }}" class="recipe-image" height="auto" width="300" > </a>
+                    <img src="{{ $recipe->image }}" class="recipe-image" height="auto" width="300"> </a>
                   <a class="c-top-list--recipe__user-name" href="#">
-                    <img src="{{ asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52" > パパイズム </a>
+                    <img src="{{ asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> パパイズム </a>
                 </div>
                 <div class="c-top-list--recipe__cont">
                   <div class="inner">
-                    <span class="time-stamp">2021年11月25日</span><span class="recipe-time"><i class="icon-timer"></i>20分</span>
+                    <span class="time-stamp">{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y') }}</span>
+                    <span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span>
                   </div>
-                  <a class="recipe-title" href="#">
+                  <a class="recipe-title" href="{{ route('recipe', $recipe->id) }}">
                     <h3>
-                      ベトナムのパン（バインミー）</h3>
+                      {{ $recipe->name }}</h3>
                   </a>
                 </div>
               </li>
-              <li>
-                <div class="c-top-list--recipe__img-wrap">
-                  <a href="#">
-                    <img src="{{ asset('images/common/hamburger.jpg') }}" class="recipe-image" height="auto" width="300" > </a>
-                  <a class="c-top-list--recipe__user-name" href="#">
-                    <img src="{{ asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52" > パパイズム </a>
-                </div>
-                <div class="c-top-list--recipe__cont">
-                  <div class="inner">
-                    <span class="time-stamp">2021年11月25日</span><span class="recipe-time"><i class="icon-timer"></i>20分</span>
-                  </div>
-                  <a class="recipe-title" href="#">
-                    <h3>
-                      ベトナムのパン（バインミー）</h3>
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="c-top-list--recipe__img-wrap">
-                  <a href="#">
-                    <img src="{{ asset('images/common/pho.jpg') }}" class="recipe-image" height="auto" width="300" > </a>
-                  <a class="c-top-list--recipe__user-name" href="#">
-                    <img src="{{ asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52" > パパイズム </a>
-                </div>
-                <div class="c-top-list--recipe__cont">
-                  <div class="inner">
-                    <span class="time-stamp">2021年11月25日</span><span class="recipe-time"><i class="icon-timer"></i>20分</span>
-                  </div>
-                  <a class="recipe-title" href="#">
-                    <h3>
-                      ベトナムのパン（バインミー）</h3>
-                  </a>
-                </div>
-              </li>
-              @endfor
+            @endforeach
           </ul>
         </section>
       </div>
@@ -142,19 +109,19 @@
     <div class="l-contents__right">
       <div class="c-side-block">
         <div class="inner">
-          <p class="c-side-block__tit--nobd">最近レシピが増えたArtist
+          <p class="c-side-block__tit--nobd">最近レシピが増えたユーザー
             <a href="/ranking?ranking_type=D#PostRank" class="c-side-block__more">一覧へ</a>
           </p>
           <ul class="c-ranking--artist">
-            @for ($i = 1; $i < 4; $i++)
+            @foreach($topUsers as $item)
               <li>
                 <a href="#">
-                  <span class="c-ranking__icon">{{ $i }}</span>
-                  <img src="{{ asset('images/common/avatar.png') }}" height="auto" class="artist-photo " width="1000" >
-                  <p class="artist-name">名前</p>
+                  <span class="c-ranking__icon">{{ $loop->iteration }}</span>
+                  <img src="{{ $item->avatar ?? asset('images/common/avatar.png') }}" height="auto" class="artist-photo " width="1000">
+                  <p class="artist-name">{{ $item->fullname ?? '' }}</p>
                 </a>
               </li>
-            @endfor
+            @endforeach
           </ul>
         </div>
       </div>
