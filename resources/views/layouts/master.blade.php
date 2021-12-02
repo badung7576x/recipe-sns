@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{ asset('css/user_recipe.css') }}" type="text/css" media="all">
   <link rel="stylesheet" href="{{ asset('css/recipes-view.css') }}" type="text/css" media="all">
   <link rel="stylesheet" href="{{ asset('css/popup.css') }}" type="text/css" media="all">
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}" type="text/css" media="all">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -27,6 +28,7 @@
   @include('layouts.header')
   @yield('content')
   @include('layouts.footer')
+  <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 
 </html>

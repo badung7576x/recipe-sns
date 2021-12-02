@@ -1,0 +1,10 @@
+.create-recipe {
+    box-sizing: border-box;
+}
+.create-recipe-td {
+    width: 250px;
+}
+.create-recipe-input {
+    width: 400px;
+    margin: 10px;
+}
