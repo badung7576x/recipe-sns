@@ -6,12 +6,14 @@
       <section class="usrColWrap">
         <div class="usrCommonCol recipe">
           <div class="recipeNameArea">
-            <ul class="scoreArea">
+            {{-- <ul class="scoreArea">
               <li>
-                <span class="recipe-favorite"><i class="icon-heart"></i> {{ $recipe->like }}</span>
+                <div class="scoreList recipe-426736">
+                  <div class="scoreBalloon cl-number">0</div>
+                </div>
               </li>
-            </ul>
-            <h1 class="recipeName">{{ $recipe->name }}</h1>
+            </ul> --}}
+            <h1 class="recipeName">ベトナムのパン（バインミー）</h1>
           </div>
           <!-- 動画 -->
           <div class="recipeBlock thmbList recipeMainArea">
@@ -19,7 +21,7 @@
             <!-- レシピ写真 -->
             <div class="phtFrame">
               <div class="mainPhtFrame">
-                <img src="{{ $recipe->image }}" width="380" id="main-pic">
+                <img src="{{ asset('images/common/banhmi.jpg') }}" width="380" id="main-pic">
               </div>
             </div>
 
@@ -31,35 +33,49 @@
                 </div>
               </div><!-- rightBtnArea --> --}}
 
-                <span class="top-bread">
-                    <a href="https://oceans-nadia.com/" class="breadcrumb-link">Nadia</a>
 
               <div class="ingredientArea">
                 <div class="ingredient">
-                  <h2 class="heading">材料</h2>
+                  <h2 class="heading">材料</h2>2人分
                 </div>
                 <div class="ingredient">
-                  <h3 class="recipeTime"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</h3>
+                  <h3 class="recipeTime"><i class="icon-timer"></i>10分</h3>
                 </div>
               </div>
 
               <table>
                 <tbody>
-                  @foreach ($recipe->recipe_materials as $item)
-                    <tr class="ingre_group_ ">
-                      <td class="group_ingredient">
-                        <div>{{ $item->name }}</div>
-                      </td>
-                      <td class="group_amount">{{ $item->quantity }} {{ $item->unit }}</td>
-                    </tr>
-                  @endforeach
+                  <tr class="ingre_group_ ">
+                    <td class="group_ingredient">
+                      <div><a href="#">白菜</a></div>
+                    </td>
+                    <td class="group_amount">300g</td>
+                  </tr>
+                  <tr class="ingre_group_ ">
+                    <td class="group_ingredient">
+                      <div><a href="#">白菜</a></div>
+                    </td>
+                    <td class="group_amount">300g</td>
+                  </tr>
+                  <tr class="ingre_group_ ">
+                    <td class="group_ingredient">
+                      <div><a href="#">ツナ缶</a></div>
+                    </td>
+                    <td class="group_amount">70g</td>
+                  </tr>
                 </tbody>
               </table>
               <div class="balloonComment-right margin-T20">
                 <h3 class="editorsComment">ノート</h3>
 
                 <p class="commentTxt">
-                  {{ $recipe->note }}
+                  めちゃくちゃ簡単でめちゃくちゃ美味しい、下手すりゃ永遠に食べてられるやつです！<br>
+                  <br>
+                  白菜を手軽に満足して食べたいなら絶対これ。<br>
+                  <br>
+                  白菜大量消費にもおすすめ。<br>
+                  <br>
+                  自信をもっておススメする副菜の1つです☆
                 </p>
               </div>
             </div><!-- detail -->
@@ -70,21 +86,26 @@
 
         <!-- 作り方 -->
         <div class="usrCommonCol step">
-
           <div class="stepBlock">
             <p class="ttl">作り方</p>
             <table>
               <tbody>
-                @foreach ($recipe->recipe_steps as $step)
-                  <tr>
-                    <td>
-                      <p>{{ $step->step }}</p>
-                    </td>
-                    <td>
-                      {{ $step->description }}
-                    </td>
-                  </tr>
-                @endforeach
+                <tr>
+                  <td>
+                    <p>1</p>
+                  </td>
+                  <td>
+                    本場ベトナムの定番「レバーパテのバインミー」のレシピをご紹介します。レバーパテは市販のものを使い、簡単で本格的な味わいを再現しました。
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>2</p>
+                  </td>
+                  <td>
+                    本場ベトナムの定番「レバーパテのバインミー」のレシピをご紹介します。レバーパテは市販のものを使い、簡単で本格的な味わいを再現しました。
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -99,7 +120,7 @@
         </div>
         <div class="changeBox">
           <div class="reviewArea">
-            <form action="#" id="reviewForm" method="get">
+            <form action="#" id="reviewForm" method="post">
               <textarea name="comment" id="review-comment" placeholder="このレシピの感想を入力する"></textarea>
               <div id="review-message"></div>
               <div class="btn btnThin float-R margin-T10">
@@ -108,7 +129,7 @@
             </form>
           </div>
           <div class="ttl review">
-            <h2>コメント1件</h2>
+            <h2>コメント2件</h2>
           </div>
           <ul class="reviewSentArea readmore-js-section" id="reviewBox">
             <!-- コメント▼ -->
@@ -116,6 +137,7 @@
               <form id="reviewReplyForm_31878" method="post">
                 <div class="thmbList review-first">
                   <div class="phtFrame"><a href="#"><img src="{{ asset('images/common/avatar.png') }}" width="50" height="50" class="scoreUsrPht "></a></div>
+
                   <div class="detail balloonComment-right">
                     <div class="reviewTxt">
                       <p class="detailTxt">作りました。味は絶品です。病みつきになりますね。白菜1玉で作り置きしてもいいかも。小腹空いた時にも食べたい1品です。</p>
@@ -148,16 +170,16 @@
             <a href="#">
               <div class="thmbList">
                 <div class="phtFrame">
-                  <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="80" height="80" alt="あみん" class="">
+                  <img src="{{ asset('images/common/avatar.png') }}" width="80" height="80" alt="あみん" class="">
                 </div>
                 <div class="detail">
-                  <p class="usrName">{{ $recipe->user->fullname ?? '' }}</p>
+                  <p class="usrName">名前</p>
                   <p class="subttl">身近にあるもので家族が喜ぶ簡単おうちごはん</p>
                 </div>
               </div>
             </a>
             <div class="btn margin-T20 btnThin"><a href="#" class="btn-inner">
-                {{ $recipe->user->fullname }}のレシピ一覧へ</a>
+                このABCのレシピ一覧へ</a>
             </div>
           </li>
         </ul>
@@ -166,17 +188,17 @@
       <section>
         <ul class="recipes">
           <li class="ttl nadiaNewRecipe">
-            新着レシピ
+            Nadia新着レシピ
           </li>
-          @foreach ($newRecipes as $recipe)
+          @for ($i = 0; $i < 3; $i++)
             <li class="thmbList">
-              <div class="phtFrame"><a href="#"><img src="{{ $recipe->image }}" width="60"></a></div>
+              <div class="phtFrame"><a href="#"><img src="{{ asset('images/common/banhmi.jpg') }}" width="60"></a></div>
               <div class="detail">
-                <p class="recipeName"><a href="#">{{ $recipe->name }}</a></p>
-                <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y ') }}</span> <i class="icon-timer margin-L10"></i>{{ $recipe->cooking_time }}分</p>
+                <p class="recipeName"><a href="#">ベトナムのパン（バインミー）</a></p>
+                <p class="recipeTime"><i class="icon-timer"></i>10分</p>
               </div>
             </li>
-          @endforeach
+          @endfor
         </ul>
       </section>
 
