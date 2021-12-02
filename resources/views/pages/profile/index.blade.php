@@ -24,11 +24,11 @@
               <div class="p-user-profile--side__heading01" style="font-size: 25px">
                 自己紹介
                 <div class="btn btnLarge" style="float:right;">
-                  <a href="#" class="btn-inner">編集</a>
+                  <a href="{{ route('profile.edit') }}" class="btn-inner">編集</a>
                 </div>
               </div>
               <div class="p-user-profile--side__contents--text margin-T40">
-                <p>無し</p>
+                <p>{{ $user->description	 ?? '無し' }}</p>
               </div>
             </div>
           </div>
