@@ -27,4 +27,6 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('profile');
     });
+
+    Route::get('recipe-list', function () { return view('pages.recipe.list'); })->name('recipe-list');
 });
