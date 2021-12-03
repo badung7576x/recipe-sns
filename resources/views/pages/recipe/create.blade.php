@@ -43,7 +43,7 @@
                 <h2>リスト　＞　レシピを登録する</h2><br><br>
                 <div class="c-top-heading">
                     <h2 style="font-size: 26px; font-weight: bold;">レシピを投稿する</h2>
-                    <span><i class="icon-calender" style="margin-right: 5px;"></i>2021.12.11</span>
+                    {{-- <span><i class="icon-calender" style="margin-right: 5px;"></i>2021.12.11</span> --}}
                 </div>
                 <form style="font-size: large; margin-left: 15rem">
                     <input type="file" name="image" accept="image/png, image/jpeg"><br><br>

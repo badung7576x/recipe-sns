@@ -6,13 +6,11 @@
       <section class="usrColWrap">
         <div class="usrCommonCol recipe">
           <div class="recipeNameArea">
-            {{-- <ul class="scoreArea">
+            <ul class="scoreArea">
               <li>
-                <div class="scoreList recipe-426736">
-                  <div class="scoreBalloon cl-number">0</div>
-                </div>
+                <span class="recipe-favorite"><i class="icon-heart"></i> {{ $recipe->like }}</span>
               </li>
-            </ul> --}}
+            </ul>
             <h1 class="recipeName">{{ $recipe->name }}</h1>
           </div>
           <!-- 動画 -->
@@ -173,7 +171,7 @@
               <div class="phtFrame"><a href="#"><img src="{{ $recipe->image }}" width="60"></a></div>
               <div class="detail">
                 <p class="recipeName"><a href="#">{{ $recipe->name }}</a></p>
-                <p class="recipeTime"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</p>
+                <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y ') }}</span> <i class="icon-timer margin-L10"></i>{{ $recipe->cooking_time }}分</p>
               </div>
             </li>
           @endforeach
