@@ -622,14 +622,6 @@ a.registerRed {
     background: url(../images/common/radio-large.png) no-repeat left -24px
 }
 
-.recipeTime {
-    font-size: 1.2rem;
-    height: 20px;
-    margin: 14px 0 0 0;
-    padding: 2px 0 0 24px;
-    background: url(../images/user/recipe/icon.png) no-repeat 0 -116px
-}
-
 .balloonComment-bottom {
     border: 1px solid #d2c8be;
     border-radius: 4px;
@@ -1109,69 +1101,6 @@ a.registerRed {
 
 .recipeList-wide .tips {
     bottom: 10px
-}
-
-.relateRecipeList {
-    float: none;
-    padding-bottom: 12px;
-    margin-bottom: 12px;
-    border-bottom: 1px dotted #d2c8be
-}
-
-.relateRecipeList:last-child {
-    border: none;
-    margin-bottom: 0;
-    padding-bottom: 0
-}
-
-.relateRecipeList .phtFrame {
-    float: left;
-    width: 120px;
-    height: 160px;
-    margin-right: 10px
-}
-
-.relateRecipeList .detail {
-    float: left;
-    width: 600px;
-    margin-top: 6px
-}
-
-.relateRecipeList .detail p {
-    margin-top: 5px
-}
-
-.relateRecipeList .detail p:first-of-type {
-    margin-top: 0
-}
-
-.relateRecipeList .detail .recipeName {
-    font-size: 1.6rem
-}
-
-.relateRecipeList .detail .recipeTime {
-    padding-left: 22px;
-    background: url(../images/user/recipe/icon.png) no-repeat 0 -93px;
-    background-size: 24px
-}
-
-.relateRecipeList .detail .ingredientTtl {
-    color: #af8728;
-    font-weight: 700
-}
-
-.relateRecipeList .detail .ingredient {
-    font-size: 1.2rem
-}
-
-.relateRecipeList .detail .comment {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    display: block;
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-top: 10px
 }
 
 .relateRecipe {
@@ -4149,35 +4078,6 @@ a.registerRed {
     line-height: 2
 }
 
-footer {
-    background: #5a320a;
-    width: 100%;
-    padding-bottom: 40px
-}
-
-footer .footContWrap {
-    width: 1100px;
-    margin: 0 auto;
-    font-size: 1.2rem;
-    text-align: center;
-    padding-top: 20px
-}
-
-footer .footContWrap .triangleLink a {
-    font-weight: 700;
-    color: #fff;
-    margin-right: 25px
-}
-
-footer .footContWrap .triangleLink:before {
-    color: #ffc300
-}
-
-footer .footContWrap .copy {
-    color: #fff;
-    margin-top: 36px
-}
-
 @media only screen and (max-width: 736px) {
     header {
         position: static
@@ -4384,19 +4284,6 @@ footer .footContWrap .copy {
 
 .twoColRight .ttl.titIcon05 {
     background-position: 0 -222px
-}
-
-.recipeTime {
-    font-size: 1.1rem;
-    height: 20px;
-    margin: 2px 0 0 0;
-    padding: 2px 0 0 18px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    display: block;
-    background: url(../images/user/recipe/icon.png) no-repeat 0 -76px;
-    background-size: 20px
 }
 
 .bisection {

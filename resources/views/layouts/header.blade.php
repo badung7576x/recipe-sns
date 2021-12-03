@@ -34,7 +34,7 @@
 
             <ul class="myMenu d-none">
               <li>
-                <a href="{{ route('profile') }}">プロフィール</a>
+                <a href="{{ route('user.profile') }}">プロフィール</a>
               </li>
               <li>
                 <a href="{{ route('logout') }}">ログアウト</a>

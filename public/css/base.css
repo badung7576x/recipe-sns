@@ -613,8 +613,8 @@ a.registerRed {
 .recipeTime {
     font-size: 1.2rem;
     height: 20px;
-    margin: 14px 0 0 0;
-    padding: 2px 0 0 24px;
+    margin: 5px 0 0 0;
+    padding: 2px 0 0 0px;
     background: url(../images/user/recipe/icon.png) no-repeat 0 -116px
 }
 
@@ -1146,7 +1146,6 @@ a.registerRed {
 }
 
 .relateRecipeList .detail .recipeTime {
-    padding-left: 22px;
     background: url(../images/user/recipe/icon.png) no-repeat 0 -93px;
     background-size: 24px
 }

@@ -85,7 +85,7 @@
             @foreach($newRecipes as $recipe)
               <li>
                 <div class="c-top-list--recipe__img-wrap">
-                  <a href="#">
+                  <a href="{{ route('recipe', $recipe->id) }}">
                     <img src="{{ $recipe->image }}" class="recipe-image" height="auto" width="300"> </a>
                   <a class="c-top-list--recipe__user-name" href="#">
                     <img src="{{ asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> パパイズム </a>
