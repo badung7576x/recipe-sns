@@ -12,7 +12,9 @@ class BaseController extends Controller
         $this->middleware(function ($request, $next) {
             if(auth()->check()) {
                 $user = auth()->user();
+                $recipeCounts = $user->recipes()->count();
                 View::share('user', $user);
+                View::share('recipeCounts', $recipeCounts);
             }
 
             return $next($request);

@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\RecipeService;
 use Illuminate\Http\Request;
 
 class ProfileController extends BaseController
 {
-    public function __construct()
+
+    protected $recipeService;
+
+    public function __construct(RecipeService $recipeService)
     {
+        $this->recipeService = $recipeService;
         parent::__construct();
     }
     
     public function index()
     {
-        return view('pages.profile.index');
+        $recipes = $this->recipeService->getRecipeByUser();
+        return view('pages.profile.index', compact('recipes'));
     }
 }
