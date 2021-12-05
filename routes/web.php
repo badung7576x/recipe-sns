@@ -30,4 +30,5 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     });
 
     Route::get('recipe-list', function () { return view('pages.recipe.list'); })->name('recipe-list');
+    Route::get('recipes/{recipe}', 'RecipeController@show')->name('recipe.show');
 });

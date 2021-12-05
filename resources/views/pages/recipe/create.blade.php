@@ -38,21 +38,114 @@
 </div>
 <div class="l-contents">
     <div class="l-contents__main">
-        <div class="p-user--recipe">
-            <section class="p-user__inner" id="p-user__recipe">
-                <h2>リスト　＞　レシピを登録する</h2><br><br>
-                <div class="c-top-heading">
-                    <h2 style="font-size: 26px; font-weight: bold;">レシピを投稿する</h2>
-                    {{-- <span><i class="icon-calender" style="margin-right: 5px;"></i>2021.12.11</span> --}}
-                </div>
-                <form style="font-size: large; margin-left: 15rem">
-                    <input type="file" name="image" accept="image/png, image/jpeg"><br><br>
-                    <table class="create-recipe">
-                        <tr>
-                            <td colspan="2" style="font-size: 20px; font-weight: bold;">
-                                料理の情報
-                                <hr>
-                            </td>
+      <div class="p-user--recipe">
+        <section class="p-user__inner" id="p-user__recipe">
+          <h2><a href="{{ route('user.profile') }}" >リスト</a> ＞ レシピを登録する</h2><br><br>
+          <div class="c-top-heading">
+            <h2 style="font-size: 26px; font-weight: bold;">レシピを投稿する</h2>
+          </div>
+          @if (session()->has('success'))
+            <p style="color: green;margin-left: 0; margin-bottom: 20px; text-align:center; font-size: 22px">
+              {{ session('success') }}
+            </p>
+          @endif
+
+          <form style="font-size: large; margin-left: 15rem" action="{{ route('recipe.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <table class="create-recipe">
+              <tr>
+                <td class="create-recipe-td" colspan="2" style="font-size: 20px; font-weight: bold;">
+                  料理のイメージ
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td class="create-recipe-td" colspan="2" style="font-size: 20px;">
+                  <input id="image-input" type="file" class="form-control" name="image"><br>
+                  <img src="{{ asset('images/common/default.jpg') }}" id="image-preview" width="100%" />
+                  @error('image')
+                    <p class="error-msg" style="margin-left: 0; margin-bottom: 20px">
+                      {{ $message }}
+                    </p>
+                  @enderror
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="font-size: 20px; font-weight: bold;">
+                  料理の情報
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td class="create-recipe-td">料理の名前<span style="color: red;">*</span></td>
+                <td>
+                  <input type="text" name="name" class="create-recipe-input" value="{{ old('name', '') }}" />
+                  @error('name')
+                    <p class="error-msg" role="alert">
+                      {{ $message }}
+                    </p>
+                  @enderror
+                </td>
+              </tr>
+              <tr>
+                <td class="create-recipe-td">予定時間<span style="color: red;">*</span></td>
+                <td>
+                  <input type="number" name="cooking_time" class="create-recipe-input" value="{{ old('cooking_time', '') }}" />
+                  @error('cooking_time')
+                    <p class="error-msg" role="alert">
+                      {{ $message }}
+                    </p>
+                  @enderror
+                </td>
+              </tr>
+            </table>
+            <br>
+            <table class="create-recipe">
+              <tr>
+                <td colspan="3" style="font-size: 20px; font-weight: bold;">
+                  材料
+                  <hr>
+                </td>
+              </tr>
+              <tr>
+                <td class="create-recipe-td">材料名<span style="color: red;">*</span></td>
+                <td style="padding-left: 10px">量<span style="color: red;">*</span></td>
+                <td style="">単位<span style="color: red;">*</span></td>
+              </tr>
+              @for ($i = 0; $i < 5; $i++)
+                <tr>
+                  <td>
+                    <input type="text" name="material_name[]" value="{{ old('material_name.' . $i) }}" />
+                    @error('material_name.' . $i)
+                      <p class="error-msg" style="margin-left: 0;">
+                        {{ $message }}
+                      </p>
+                    @enderror
+                  </td>
+                  <td>
+                    <input type="number" name="material_quantity[]" class="ml-10" value="{{ old('material_quantity.' . $i) }}" />
+                    @error('material_quantity.' . $i)
+                      <p class="error-msg" role="alert">
+                        {{ $message }}
+                      </p>
+                    @enderror
+                  </td>
+                  <td>
+                    <input type="text" name="material_unit[]" value="{{ old('material_unit.' . $i) }}" />
+                    @error('material_unit.' . $i)
+                      <p class=" error-msg" role="alert">
+                        {{ $message }}
+                      </p>
+                    @enderror
+                  </td>
+                </tr>
+              @endfor
+              {{-- <tr style="cursor: pointer; " class="create-recipe-add-material">
+                <td colspan="3" style="text-align: center; ">
+                  +
+                </td>
+              </tr> --}}
+            </table>
 
                         </tr>
                         <tr>

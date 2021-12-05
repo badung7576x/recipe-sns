@@ -32,6 +32,6 @@ class RegisterController extends BaseController
             return redirect()->back()->withErrors(['common' => 'アカウントの登録が失敗しました。']);
         }
 
-        return redirect()->back()->with(['success' => 'アカウントが登録しました。']);
+        return redirect()->route('login')->with(['success' => 'アカウントが登録しました。']);
     }
 }
