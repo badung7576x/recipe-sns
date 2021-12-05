@@ -2086,8 +2086,9 @@ body {
 
 .p-user-profile--side__image {
   margin: 0 auto 20px auto;
-  width: 80%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; 
 }
 
 .p-user-profile--side__name {

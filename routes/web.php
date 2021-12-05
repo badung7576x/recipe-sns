@@ -27,6 +27,8 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('user.profile');
+        Route::get('users/{user}/edit', 'ProfileController@edit')->name('user.edit');
+        Route::post('users/{user}/edit', 'ProfileController@update')->name('user.update');
         Route::get('recipes/create', 'RecipeController@create')->name('recipe.create');
         Route::post('recipes/create', 'RecipeController@store')->name('recipe.store');
         Route::get('recipes/{recipe}/edit', 'RecipeController@edit')->name('recipe.edit');

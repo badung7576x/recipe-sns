@@ -5,7 +5,7 @@
       <section class="c-side-block--user">
         <div class="inner">
           <div class="p-user-profile--side">
-            <img src="{{ asset('images/common/avatar.png') }}" class="p-user-profile--side__image" width="500" height="500" />
+            <img src="{{ $user->avatar ?? asset('images/common/avatar.png') }}" class="p-user-profile--side__image"/>
             <div class="p-user-profile--side__contents">
               <h2 class="p-user-profile--side__name">{{ $user->fullname ?? '' }}</h2>
               <ul class="p-user-profile__follow">
@@ -24,11 +24,11 @@
               <div class="p-user-profile--side__heading01" style="font-size: 25px">
                 自己紹介
                 <div class="btn btnLarge" style="float:right;">
-                  <a href="#" class="btn-inner">編集</a>
+                  <a href="{{ route('user.edit', $user->id) }}" class="btn-inner">編集</a>
                 </div>
               </div>
               <div class="p-user-profile--side__contents--text margin-T40">
-                <p>無し</p>
+                <p>{{ $user->description }}</p>
               </div>
             </div>
           </div>

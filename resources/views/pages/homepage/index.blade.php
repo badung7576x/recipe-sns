@@ -42,9 +42,9 @@
                         <span class="recipe-favorite"><i class="icon-heart"></i>{{ $recipe->like }}</span>
                       </div>
                       <a class="recipe-image" href="#">
-                        <img src="{{ $recipe->image }}" height="auto" width="300"> </a>
-                      <a class="user-name" href="#">
-                        <img src="{{ asset('images/common/avatar.png') }}" width="26" height="26" class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
+                        <img src="{{ $recipe->image }}" height="150px" width="300px"> </a>
+                      <a class="user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
+                        <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="26" height="26" class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
                     </div>
                     <div class="c-slider-seasonal__cont">
                       <div class="recipe-week">
@@ -86,8 +86,8 @@
               <li>
                 <div class="c-top-list--recipe__img-wrap">
                   <a href="{{ route('recipe.show', $recipe->id) }}">
-                    <img src="{{ $recipe->image }}" class="recipe-image" height="auto" width="300"> </a>
-                  <a class="c-top-list--recipe__user-name" href="#">
+                    <img src="{{ $recipe->image }}" class="recipe-image" height="150px" width="300px"> </a>
+                  <a class="c-top-list--recipe__user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
                     <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> {{ $recipe->user->fullname }} </a>
                 </div>
                 <div class="c-top-list--recipe__cont">
@@ -117,7 +117,7 @@
               <li>
                 <a href="{{ route('recipe.list', $item->id) }}">
                   <span class="c-ranking__icon">{{ $loop->iteration }}</span>
-                  <img src="{{ $item->avatar ?? asset('images/common/avatar.png') }}" height="auto" class="artist-photo " width="1000">
+                  <img src="{{ $item->avatar ?? asset('images/common/avatar.png') }}" height="100px" class="artist-photo " width="100px">
                   <p class="artist-name">{{ $item->fullname ?? '' }}</p>
                 </a>
               </li>
