@@ -9,7 +9,7 @@
             <div class="p-user-profile--side__contents">
               <h2 class="p-user-profile--side__name">{{ $user->fullname ?? '' }}</h2>
               <ul class="p-user-profile__follow">
-                <li style="margin-left: 5%; width: 85%;"><a href="#">レシピ数<span>545</span></a></li>
+                <li style="margin-left: 5%; width: 85%;"><a href="#">レシピ数<span>{{ $recipeCounts }}</span></a></li>
               </ul>
             </div>
           </div>
@@ -53,37 +53,37 @@
           @enderror
           <div class="btnFrame" style="margin: right;">
             <div class="btn margin-T10 margin-B10 margin-L10 margin-R10 btnLogin" style="float:right;">
-              <a href="#" class="btn-inner">レシピを投稿する</a>
+              <a href="{{ route('recipe.create') }}" class="btn-inner">レシピを投稿する</a>
             </div>
           </div>
           <ul class="c-user-recipe-list--box">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach ($recipes as $recipe)
               <li class="c-user-recipe-list--box__li recipe-426656">
                 <div class="c-user-recipe-list--box__photo">
                   <a href="#">
-                    <img src="{{ asset('images/common/banhmi.jpg') }}" width="150" height="200"  /></a>
+                    <img src="{{ $recipe->image }}" width="200" /></a>
                 </div>
                 <div class="c-user-recipe-list--box__box">
-                  <p class="c-user-recipe-list--box__recipe-tit"><a href="#" class="recipe-titlelink">ベトナムのパン（バインミー）</a>
+                  <p class="c-user-recipe-list--box__recipe-tit"><a href="#" class="recipe-titlelink">{{ $recipe->name }}</a>
                   </p>
 
                   <ul class="c-user-recipe-list--box__date">
-                    <li class="recipe-registdate">2021年11月26日 19:09</li>
-                    <li class="recipeTime">20分</li>
+                    <li class="recipe-registdate">{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y') }}</li>
+                    <li><span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span></li>
                   </ul>
 
                   <div class="c-user-recipe-list--box__comment">
-                    「バインミー」は、フランスパンにさまざまな具材をはさんだサンドイッチです。ベトナムでは、食パンのこともバインミーといいます。ホーチミンやハノイでは、街のいたる所にバインミーを販売するワゴンが見られます。バインミーは、ベトナム人の定番メニューとして親しまれています。
+                    {{ $recipe->description }}
                   </div>
                   <div class="btn margin-All5 btnLarge" style="float:right;">
-                    <a href="#" class="btn-inner">編集</a>
+                    <a href="{{ route('recipe.edit', $recipe->id) }}" class="btn-inner">編集</a>
                   </div>
                   <div class="btn margin-All5 btnLarge" style="float:right;">
-                    <a href="#" class="btn-inner">削除</a>
+                    <a href="{{ route('recipe.delete', $recipe->id) }}" class="btn-inner">削除</a>
                   </div>
                 </div>
               </li>
-            @endfor
+            @endforeach
           </ul>
         </section>
       </div>

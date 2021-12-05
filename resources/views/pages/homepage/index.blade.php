@@ -55,7 +55,7 @@
                       </div>
 
                       <div class="c-slider-seasonal__info">
-                        <a class="recipe-title" href="{{ route('recipe', $recipe->id) }}">
+                        <a class="recipe-title" href="{{ route('recipe.show', $recipe->id) }}">
                           <h3 class="recipe-title">{{ $recipe->name }}</h3>
                         </a>
                       </div>
@@ -85,17 +85,17 @@
             @foreach($newRecipes as $recipe)
               <li>
                 <div class="c-top-list--recipe__img-wrap">
-                  <a href="{{ route('recipe', $recipe->id) }}">
+                  <a href="{{ route('recipe.show', $recipe->id) }}">
                     <img src="{{ $recipe->image }}" class="recipe-image" height="auto" width="300"> </a>
                   <a class="c-top-list--recipe__user-name" href="#">
-                    <img src="{{ asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> パパイズム </a>
+                    <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> {{ $recipe->user->fullname }} </a>
                 </div>
                 <div class="c-top-list--recipe__cont">
                   <div class="inner">
                     <span class="time-stamp">{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y') }}</span>
                     <span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span>
                   </div>
-                  <a class="recipe-title" href="{{ route('recipe', $recipe->id) }}">
+                  <a class="recipe-title" href="{{ route('recipe.show', $recipe->id) }}">
                     <h3>
                       {{ $recipe->name }}</h3>
                   </a>

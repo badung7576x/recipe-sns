@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\Recipe;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class RecipeService
 {
@@ -14,7 +16,8 @@ class RecipeService
             ->take('10')->get();
     }
 
-    public function getNewRecipes($limit = 15) {
+    public function getNewRecipes($limit = 15)
+    {
         return Recipe::with('user')
             ->orderBy('created_at', 'desc')
             ->take($limit)->get();

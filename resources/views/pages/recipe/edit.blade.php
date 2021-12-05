@@ -40,9 +40,9 @@
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
-          <h2><a href="{{ route('user.profile') }}" >リスト</a> ＞ レシピを登録する</h2><br><br>
+          <h2><a href="{{ route('user.profile') }}" >リスト</a> ＞ レシピを編集する</h2><br><br>
           <div class="c-top-heading">
-            <h2 style="font-size: 26px; font-weight: bold;">レシピを投稿する</h2>
+            <h2 style="font-size: 26px; font-weight: bold;">レシピを編集する</h2>
           </div>
           @if (session()->has('success'))
             <p style="color: green;margin-left: 0; margin-bottom: 20px; text-align:center; font-size: 22px">
@@ -50,7 +50,7 @@
             </p>
           @endif
 
-          <form style="font-size: large; margin-left: 15rem" action="{{ route('recipe.store') }}" method="post" enctype="multipart/form-data">
+          <form style="font-size: large; margin-left: 15rem" action="{{ route('recipe.update', $recipe->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <table class="create-recipe">
               <tr>
@@ -62,7 +62,7 @@
               <tr>
                 <td class="create-recipe-td" colspan="2" style="font-size: 20px;">
                   <input id="image-input" type="file" class="form-control" name="image"><br>
-                  <img src="{{ asset('images/common/default.jpg') }}" id="image-preview" width="100%" />
+                  <img src="{{ $recipe->image }}" id="image-preview" width="100%" />
                   @error('image')
                     <p class="error-msg" style="margin-left: 0; margin-bottom: 20px">
                       {{ $message }}
@@ -79,7 +79,7 @@
               <tr>
                 <td class="create-recipe-td">料理の名前<span style="color: red;">*</span></td>
                 <td>
-                  <input type="text" name="name" class="create-recipe-input" value="{{ old('name', '') }}" />
+                  <input type="text" name="name" class="create-recipe-input" value="{{ old('name', $recipe->name) }}" />
                   @error('name')
                     <p class="error-msg" role="alert">
                       {{ $message }}
@@ -90,7 +90,7 @@
               <tr>
                 <td class="create-recipe-td">予定時間<span style="color: red;">*</span></td>
                 <td>
-                  <input type="number" name="cooking_time" class="create-recipe-input" value="{{ old('cooking_time', '') }}" />
+                  <input type="number" name="cooking_time" class="create-recipe-input" value="{{ old('cooking_time', $recipe->cooking_time) }}" />
                   @error('cooking_time')
                     <p class="error-msg" role="alert">
                       {{ $message }}
@@ -112,27 +112,57 @@
                 <td style="padding-left: 10px">量<span style="color: red;">*</span></td>
                 <td style="">単位<span style="color: red;">*</span></td>
               </tr>
-              @for ($i = 0; $i < 5; $i++)
+              @foreach ($recipe->recipe_materials as $material)
                 <tr>
+                  @php $i = $loop->iteration @endphp
                   <td>
-                    <input type="text" name="material_name[]" value="{{ old('material_name.' . $i) }}" />
-                    @error('material_name.' . $i)
+                    <input type="text" name="material_name[]" value="{{ old('material_name.' . ($i - 1), $material->name) }}" />
+                    @error('material_name.' . ($i - 1))
                       <p class="error-msg" style="margin-left: 0;">
                         {{ $message }}
                       </p>
                     @enderror
                   </td>
                   <td>
-                    <input type="number" name="material_quantity[]" class="ml-10" value="{{ old('material_quantity.' . $i) }}" />
-                    @error('material_quantity.' . $i)
+                    <input type="number" name="material_quantity[]" class="ml-10" value="{{ old('material_quantity.' . ($i - 1), $material->quantity) }}" />
+                    @error('material_quantity.' . ($i - 1))
                       <p class="error-msg" role="alert">
                         {{ $message }}
                       </p>
                     @enderror
                   </td>
                   <td>
-                    <input type="text" name="material_unit[]" value="{{ old('material_unit.' . $i) }}" />
-                    @error('material_unit.' . $i)
+                    <input type="text" name="material_unit[]" value="{{ old('material_unit.' . ($i - 1), $material->unit) }}" />
+                    @error('material_unit.' . ($i - 1))
+                      <p class=" error-msg" role="alert">
+                        {{ $message }}
+                      </p>
+                    @enderror
+                  </td>
+                </tr>
+              @endforeach
+              @php $i = $i + 1 @endphp
+              @for($i; $i <= 5; $i++)
+                <tr>
+                  <td>
+                    <input type="text" name="material_name[]" value="{{ old('material_name.' . ($i - 1), '') }}" />
+                    @error('material_name.' . ($i - 1))
+                      <p class="error-msg" style="margin-left: 0;">
+                        {{ $message }}
+                      </p>
+                    @enderror
+                  </td>
+                  <td>
+                    <input type="number" name="material_quantity[]" class="ml-10" value="{{ old('material_quantity.' . ($i - 1), '') }}" />
+                    @error('material_quantity.' . ($i - 1))
+                      <p class="error-msg" role="alert">
+                        {{ $message }}
+                      </p>
+                    @enderror
+                  </td>
+                  <td>
+                    <input type="text" name="material_unit[]" value="{{ old('material_unit.' . ($i - 1), '') }}" />
+                    @error('material_unit.' . ($i - 1))
                       <p class=" error-msg" role="alert">
                         {{ $message }}
                       </p>
@@ -158,10 +188,18 @@
                 <td class="create-recipe-td">ステップ名</td>
                 <td style="padding: 1rem;">説明<span style="color: red;">*</span></td>
               </tr>
-              @for ($i = 1; $i <= 5; $i++)
+              @foreach ($recipe->recipe_steps as $step)
+                @php $i = $loop->iteration @endphp
                 <tr>
                   <td class="create-recipe-td recipe-step">{{ $i }}</td>
-                  <td><input type="text" name="step_description[]" class="create-recipe-input" value="{{ old('step_description.' . $i) }}" /></td>
+                  <td><input type="text" name="step_description[]" class="create-recipe-input" value="{{ old('step_description.' . ($i - 1), $step->description) }}" /></td>
+                </tr>
+              @endforeach
+              @php $i = $i + 1 @endphp
+              @for ($i; $i <= 5; $i++)
+                <tr>
+                  <td class="create-recipe-td recipe-step">{{ $i }}</td>
+                  <td><input type="text" name="step_description[]" class="create-recipe-input" value="{{ old('step_description.' . ($i - 1)) }}" /></td>
                 </tr>
               @endfor
               {{-- <tr style="cursor: pointer; " class="create-recipe-add-step">
@@ -174,7 +212,7 @@
             <div style="width: 690px;">
               <header style="font-size: 20px; font-weight: bold;"><i class="icon-memo"></i>ノート</header>
               <hr>
-              <textarea style="height: 200px;" name="note">{{ old('note', '') }}</textarea>
+              <textarea style="height: 200px;" name="note">{{ old('note', $recipe->note) }}</textarea>
             </div>
             <button type="submit" class="btn btnLarge"><span class="btn-inner">保存</span></button>
           </form>

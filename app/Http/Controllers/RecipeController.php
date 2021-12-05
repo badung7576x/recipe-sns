@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRecipeRequest;
+use App\Http\Requests\UpdateRecipeRequest;
 use App\Models\Recipe;
 use App\Services\RecipeService;
 use Illuminate\Http\Request;
@@ -12,10 +14,16 @@ class RecipeController extends BaseController
 
     public function __construct(RecipeService $recipeService)
     {
+        parent::__construct();
         $this->recipeService = $recipeService;
     }
 
-    public function index(Recipe $recipe)
+    public function index()
+    {
+        return view('pages.recipe.index');
+    }
+
+    public function show(Recipe $recipe)
     {
         $recipe = $recipe->load(['user', 'recipe_steps', 'recipe_materials']);
         $newRecipes = $this->recipeService->getNewRecipes(3);

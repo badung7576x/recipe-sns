@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,15 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::get('logout', 'LoginController@logout')->name('logout');
     
     Route::get('', 'HomeController@index')->name('index');
-    Route::get('recipe/{recipe}', 'RecipeController@index')->name('recipe');
+    Route::get('recipes', 'RecipeController@index')->name('recipe.index');
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('user.profile');
+        Route::get('recipes/create', 'RecipeController@create')->name('recipe.create');
+        Route::post('recipes/create', 'RecipeController@store')->name('recipe.store');
+        Route::get('recipes/{recipe}/edit', 'RecipeController@edit')->name('recipe.edit');
+        Route::post('recipes/{recipe}/update', 'RecipeController@update')->name('recipe.update');
+        Route::get('recipes/{recipe}/delete', 'RecipeController@delete')->name('recipe.delete');
     });
 
     Route::get('recipes/{recipe}', 'RecipeController@show')->name('recipe.show');
