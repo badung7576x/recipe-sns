@@ -64,7 +64,7 @@
                     <img src="{{ $recipe->image }}" width="200" /></a>
                 </div>
                 <div class="c-user-recipe-list--box__box">
-                  <p class="c-user-recipe-list--box__recipe-tit"><a href="#" class="recipe-titlelink">{{ $recipe->name }}</a>
+                  <p class="c-user-recipe-list--box__recipe-tit"><a href="{{ route('recipe.show', $recipe->id) }}" class="recipe-titlelink">{{ $recipe->name }}</a>
                   </p>
 
                   <ul class="c-user-recipe-list--box__date">
