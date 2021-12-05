@@ -40,7 +40,7 @@
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
-          <h2>リスト ＞ レシピを登録する</h2><br><br>
+          <h2><a href="{{ route('user.profile') }}" >リスト</a> ＞ レシピを登録する</h2><br><br>
           <div class="c-top-heading">
             <h2 style="font-size: 26px; font-weight: bold;">レシピを投稿する</h2>
           </div>

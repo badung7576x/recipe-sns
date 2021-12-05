@@ -87,7 +87,7 @@ class RecipeService
             'description' => $data['note'],
             'note' => $data['note']
         ];
-        if($image) {
+        if(!empty($image)) {
             $recipeUpdateData = array_merge($recipeUpdateData, ['image' => $image['url']]);
         }
 

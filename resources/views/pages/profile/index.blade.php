@@ -5,7 +5,7 @@
       <section class="c-side-block--user">
         <div class="inner">
           <div class="p-user-profile--side">
-            <img src="{{ asset('images/common/avatar.png') }}" class="p-user-profile--side__image" width="500" height="500"  />
+            <img src="{{ asset('images/common/avatar.png') }}" class="p-user-profile--side__image" width="500" height="500" />
             <div class="p-user-profile--side__contents">
               <h2 class="p-user-profile--side__name">{{ $user->fullname ?? '' }}</h2>
               <ul class="p-user-profile__follow">
@@ -41,6 +41,16 @@
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
           <h2 class="p-user__title" style="text-align: center;">レシピ一覧</h2>
+          @if (session()->has('success'))
+            <p style="color: green;margin-left: 0; margin-bottom: 20px; text-align:center; font-size: 22px">
+              {{ session('success') }}
+            </p>
+          @endif
+          @error('error')
+            <p class="error-msg" style="margin-left: 0; margin-bottom: 20px">
+              {{ $message }}
+            </p>
+          @enderror
           <div class="btnFrame" style="margin: right;">
             <div class="btn margin-T10 margin-B10 margin-L10 margin-R10 btnLogin" style="float:right;">
               <a href="{{ route('recipe.create') }}" class="btn-inner">レシピを投稿する</a>

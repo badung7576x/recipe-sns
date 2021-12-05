@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="ppBody" style="height: 500px">
+  <div class="ppBody" style="height: 550px">
     <form action="{{ route('login-post') }}" method="post" accept-charset="utf-8">
       @csrf
       <div class="ppWrap" id="loginForm">
@@ -8,6 +8,9 @@
         @error('common')
           <p class="message-error">{{ $message }}</p>
         @enderror
+        @if (session()->has('success'))
+          <p class="message-success">{{ session('success') }}</p>
+        @endif
         <div class="ppCont">
           <p class="subTtl">旬の一週間レシピ</p>
           <table class="loginTable">
@@ -44,7 +47,7 @@
           <p class="subTtl">まだ会員登録をされていない方</p>
           <p class="alignC">会員登録は無料です。是非ご登録ください。</p>
           <div class="btnFrame">
-            <div class="btn margin-T10 margin-B10 margin-L10 margin-R10 btnRegister">
+            <div class="btn margin-T10 margin-B20 margin-L10 margin-R10 btnRegister">
               <a href="{{ route('signup') }}" class="btn-inner">無料会員登録</a>
             </div>
           </div>
