@@ -23,12 +23,18 @@ class RecipeService
             ->take($limit)->get();
     }
 
-    public function getRecipeByUser()
+    public function getRecipeByUser($userId = null, $withPaginate = false)
     {
-        $userId = auth()->user()->id;
+        $userId = $userId ?? auth()->user()->id;
 
-        return Recipe::where('user_id', $userId)
-            ->orderBy('created_at', 'desc')->get();
+        $query = Recipe::where('user_id', $userId)
+            ->orderBy('created_at', 'desc');
+        
+        if ($withPaginate) {
+            return $query->paginate(10);
+        }
+            
+        return $query->get();
     }
 
     public function createRecipe($data)

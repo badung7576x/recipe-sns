@@ -109,13 +109,13 @@
     <div class="l-contents__right">
       <div class="c-side-block">
         <div class="inner">
-          <p class="c-side-block__tit--nobd">最近レシピが増えたユーザー
-            <a href="/ranking?ranking_type=D#PostRank" class="c-side-block__more">一覧へ</a>
+          <p class="c-side-block__tit--nobd">最近のユーザー
+            {{-- <a href="/ranking?ranking_type=D#PostRank" class="c-side-block__more">一覧へ</a> --}}
           </p>
           <ul class="c-ranking--artist">
             @foreach($topUsers as $item)
               <li>
-                <a href="#">
+                <a href="{{ route('recipe.list', $item->id) }}">
                   <span class="c-ranking__icon">{{ $loop->iteration }}</span>
                   <img src="{{ $item->avatar ?? asset('images/common/avatar.png') }}" height="auto" class="artist-photo " width="1000">
                   <p class="artist-name">{{ $item->fullname ?? '' }}</p>

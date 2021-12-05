@@ -18,7 +18,7 @@ class ProfileController extends BaseController
     
     public function index()
     {
-        $recipes = $this->recipeService->getRecipeByUser();
+        $recipes = $this->recipeService->getRecipeByUser(null, true);
         return view('pages.profile.index', compact('recipes'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
 use App\Models\Recipe;
+use App\Models\User;
 use App\Services\RecipeService;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,12 @@ class RecipeController extends BaseController
         $this->recipeService = $recipeService;
     }
 
-    public function index()
+    public function index(User $user)
     {
-        return view('pages.recipe.index');
+        $currentUser = $user;
+        $recipes = $this->recipeService->getRecipeByUser($currentUser->id, true);
+
+        return view('pages.recipe.index', compact('currentUser', 'recipes'));
     }
 
     public function show(Recipe $recipe)

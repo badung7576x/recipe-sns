@@ -85,6 +85,7 @@
               </li>
             @endforeach
           </ul>
+          {{ $recipes->links('layouts.paginate') }}
         </section>
       </div>
 
