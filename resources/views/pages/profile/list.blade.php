@@ -7,19 +7,19 @@
         <h2 class="p-user__title"><i class="icon-star"></i>ユーザー一覧</h2>
           
           <ul class="c-user-recipe-list--box">
-            @foreach ($users as $user)
+            @foreach ($users as $item)
               <li class="c-user-recipe-list--box__li recipe-427015">
                 <div class="c-user-recipe-list--box__photo">
-                  <a href="{{ route('recipe.list', $user->id) }}">
-                    <img src="{{ $user->avatar ?? asset('images/common/avatar.png') }}" width="100">
+                  <a href="{{ route('recipe.list', $item->id) }}">
+                    <img src="{{ $item->avatar ?? asset('images/common/avatar.png') }}" width="100">
                   </a>
                 </div>
                 <div class="c-user-recipe-list--box__box">
                   <p class="c-user-recipe-list--box__recipe-tit">
-                    <a href="{{ route('recipe.list', $user->id) }}" class="recipe-titlelink">{{ $user->fullname }}</a>
+                    <a href="{{ route('recipe.list', $item->id) }}" class="recipe-titlelink">{{ $item->fullname }}</a>
                   </p>
                   <div class="c-user-recipe-list--box__comment">
-                    {{ $user->description }}
+                    {{ $item->description }}
                   </div>
                 </div>
               </li>

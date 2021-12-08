@@ -5,7 +5,7 @@
       <section class="c-side-block--user">
         <div class="inner">
           <div class="p-user-profile--side">
-            <img src="{{ $user->avatar ?? asset('images/common/avatar.png') }}" class="p-user-profile--side__image"/>
+            <img src="{{ $user->avatar ?? asset('images/common/avatar.png') }}" class="p-user-profile--side__image" />
             <div class="p-user-profile--side__contents">
               <h2 class="p-user-profile--side__name">{{ $user->fullname ?? '' }}</h2>
               <ul class="p-user-profile__follow">
@@ -21,6 +21,11 @@
         <div class="inner">
           <div class="p-user-profile--side">
             <div class="p-user-profile--side__contents">
+              @if (session()->has('success-profile'))
+                <p style="color: green;margin-left: 0; margin-bottom: 20px; text-align:center; font-size: 22px">
+                  {{ session('success-profile') }}
+                </p>
+              @endif
               <div class="p-user-profile--side__heading01" style="font-size: 25px">
                 自己紹介
                 <div class="btn btnLarge" style="float:right;">

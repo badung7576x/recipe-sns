@@ -76,7 +76,7 @@ class RecipeController extends BaseController
 
         $this->recipeService->updateRecipe($recipe, $data);
 
-        return redirect()->route('recipe.edit', $recipe->id)->with('success', 'レシピを更新しました。');
+        return redirect()->route('user.profile')->with('success', 'レシピを更新しました。');
     }
 
     public function delete(Recipe $recipe)
@@ -87,6 +87,6 @@ class RecipeController extends BaseController
             return back()->withErrors(['error' => 'レシピの削除が失敗しました。']);
         }
 
-        return redirect()->route('user.profile')->with('success', 'レシピを削除しました。');;
+        return redirect()->route('user.profile')->with('success', 'レシピを削除しました。');
     }
 }

@@ -48,6 +48,6 @@ class ProfileController extends BaseController
             return redirect()->back()->withErrors(['common' => $e->getMessage()]);
         }
 
-        return redirect()->route('user.profile');
+        return redirect()->route('user.profile')->with('success-profile', 'プロフィールを更新しました。');
     }
 }
