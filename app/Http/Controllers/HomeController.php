@@ -26,4 +26,8 @@ class HomeController extends BaseController
 
         return view('pages.homepage.index', compact('recipesThisWeek', 'newRecipes', 'topUsers'));
     }
+
+    public function developing() {
+        return view('layouts.temp');
+    }
 }

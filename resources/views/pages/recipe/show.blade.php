@@ -144,18 +144,18 @@
             <h2>プロフィール</h2>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('recipe.list', $recipe->user->id) }}">
               <div class="thmbList">
                 <div class="phtFrame">
                   <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="80" height="80" alt="あみん" class="">
                 </div>
                 <div class="detail">
                   <p class="usrName">{{ $recipe->user->fullname ?? '' }}</p>
-                  <p class="subttl">身近にあるもので家族が喜ぶ簡単おうちごはん</p>
+                  <p class="subttl">{{ $recipe->user->description }}</p>
                 </div>
               </div>
             </a>
-            <div class="btn margin-T20 btnThin"><a href="#" class="btn-inner">
+            <div class="btn margin-T20 btnThin"><a href="{{ route('recipe.list', $recipe->user->id) }}" class="btn-inner">
                 {{ $recipe->user->fullname }}のレシピ一覧へ</a>
             </div>
           </li>

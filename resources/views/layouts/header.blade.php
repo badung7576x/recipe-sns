@@ -48,10 +48,10 @@
   <nav class="gNav">
     <ul>
       <li><a href="{{ route('recipe.all') }}">レシピ</a></li>
-      <li><a href="#">ランキング</a></li>
+      <li><a href="{{ route('developing') }}">ランキング</a></li>
       <li><a href="{{ route('recipe.all') . '?type=recommend'}}">おすすめ</a></li>
       <li><a href="{{ route('user.list') }}">Artist</a></li>
-      <li><a href="#">Starsとは</a></li>
+      <li><a href="{{ route('developing') }}">Starsとは</a></li>
     </ul>
   </nav>
 </header>

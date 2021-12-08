@@ -22,6 +22,8 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::post('login', 'LoginController@login')->name('login-post');
     Route::get('logout', 'LoginController@logout')->name('logout');
     
+    Route::get('/developing', 'HomeController@developing')->name('developing');
+    
     Route::get('', 'HomeController@index')->name('index');
     Route::get('users', 'ProfileController@list')->name('user.list');
     Route::get('recipes', 'RecipeController@index')->name('recipe.index');
