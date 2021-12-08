@@ -52,13 +52,15 @@
                   @endforeach
                 </tbody>
               </table>
-              <div class="balloonComment-right margin-T20">
-                <h3 class="editorsComment">ノート</h3>
+              @if (!empty($recipe->note))
+                <div class="balloonComment-right margin-T20">
+                  <h3 class="editorsComment">ノート</h3>
 
-                <p class="commentTxt">
-                  {{ $recipe->note }}
-                </p>
-              </div>
+                  <p class="commentTxt">
+                    {{ $recipe->note }}
+                  </p>
+                </div>
+              @endif
             </div><!-- detail -->
 
           </div><!-- recipeBlock thmbList recipeMainArea -->
@@ -170,7 +172,8 @@
               <div class="phtFrame"><a href="#"><img src="{{ $recipe->image }}" width="60"></a></div>
               <div class="detail">
                 <p class="recipeName"><a href="{{ route('recipe.show', $recipe->id) }}">{{ $recipe->name }}</a></p>
-                <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y ') }}</span> <i class="icon-timer margin-L10"></i>{{ $recipe->cooking_time }}分</p>
+                <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y ') }}</span> <i
+                    class="icon-timer margin-L10"></i>{{ $recipe->cooking_time }}分</p>
               </div>
             </li>
           @endforeach

@@ -27,6 +27,12 @@ class ProfileController extends BaseController
         return view('pages.profile.index', compact('recipes'));
     }
 
+    public function list()
+    {
+        $users = $this->userService->getAllUsers();
+        return view('pages.profile.list', compact('users'));
+    }
+
     public function edit(User $user)
     {
         $currentUser = $user;
@@ -42,6 +48,6 @@ class ProfileController extends BaseController
             return redirect()->back()->withErrors(['common' => $e->getMessage()]);
         }
 
-        return redirect()->route('user.edit', $user->id)->with(['success' => 'プロフィールを更新しました。']);
+        return redirect()->route('user.profile');
     }
 }

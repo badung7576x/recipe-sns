@@ -9,20 +9,41 @@ use Illuminate\Support\Facades\Log;
 
 class RecipeService
 {
-    public function getRecipesOnThisWeek()
+    public function getRecipesOnThisWeek($withPaginate = false)
     {
-        return Recipe::with('user')
-            ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-            ->take('10')->get();
+        $query = Recipe::with('user')
+            ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+        
+        if ($withPaginate) {
+            return $query->paginate(10);
+        } else {
+            return $query->take('10')->get();
+        }
     }
 
-    public function getNewRecipes($limit = 15)
+    public function getNewRecipes($withPaginate = false)
     {
-        return Recipe::with('user')
-            ->orderBy('created_at', 'desc')
-            ->take($limit)->get();
+        $query = Recipe::with('user')
+            ->orderBy('created_at', 'desc');
+            
+        if ($withPaginate) {
+            return $query->paginate(10);
+        } else {
+            return $query->take(15)->get();
+        }
     }
 
+    public function getRandomRecipes ($withPaginate = false) {
+        $query = Recipe::inRandomOrder()->with('user')
+            ->orderBy('created_at', 'desc');
+            
+        if ($withPaginate) {
+            return $query->paginate(10);
+        } else {
+            return $query->take(15)->get();
+        }
+    }
+    
     public function getRecipeByUser($userId = null, $withPaginate = false)
     {
         $userId = $userId ?? auth()->user()->id;
@@ -50,7 +71,7 @@ class RecipeService
                 'image' => $image['url'],
                 'like' => 0,
                 'cooking_time' => $data['cooking_time'],
-                'description' => $data['note'],
+                'description' => $data['note'] ?? '無し',
                 'note' => $data['note']
             ]);
 
@@ -90,7 +111,7 @@ class RecipeService
         $recipeUpdateData = [
             'name' => $data['name'],
             'cooking_time' => $data['cooking_time'],
-            'description' => $data['note'],
+            'description' => $data['note'] ?? '無し',
             'note' => $data['note']
         ];
         if(!empty($image)) {

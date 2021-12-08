@@ -27,6 +27,20 @@ class RecipeController extends BaseController
         return view('pages.recipe.index', compact('currentUser', 'recipes'));
     }
 
+    public function list(Request $request)
+    {
+        $type = $request->get('type');
+        if ($type == 'thisweek') {
+            $recipes = $this->recipeService->getRecipesOnThisWeek(true);
+        } else if ($type == 'recommend') {
+            $recipes = $this->recipeService->getRandomRecipes(true);
+        } else {
+            $recipes = $this->recipeService->getNewRecipes(true);
+        }
+
+        return view('pages.recipe.index', compact('recipes', 'type'));
+    }
+
     public function show(Recipe $recipe)
     {
         $recipe = $recipe->load(['user', 'recipe_steps', 'recipe_materials']);
@@ -52,7 +66,7 @@ class RecipeController extends BaseController
     public function edit(Recipe $recipe)
     {
         $recipe->load(['recipe_steps', 'recipe_materials']);
-        
+
         return view('pages.recipe.edit', compact('recipe'));
     }
 

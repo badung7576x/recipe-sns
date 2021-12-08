@@ -23,6 +23,11 @@ class UserService
         return User::take(3)->get();
     }
 
+    public function getAllUsers()
+    {
+        return User::orderBy('created_at', 'desc')->get();
+    }
+
     public function updateProfile($user, $data)
     {
         try {

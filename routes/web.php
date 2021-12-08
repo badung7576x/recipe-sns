@@ -23,7 +23,9 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::get('logout', 'LoginController@logout')->name('logout');
     
     Route::get('', 'HomeController@index')->name('index');
+    Route::get('users', 'ProfileController@list')->name('user.list');
     Route::get('recipes', 'RecipeController@index')->name('recipe.index');
+    Route::get('recipes/list', 'RecipeController@list')->name('recipe.all');
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('user.profile');

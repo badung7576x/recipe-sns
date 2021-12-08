@@ -27,7 +27,7 @@
               </svg>
               旬の一週間レシピ
             </h2>
-            <a href="#" class="c-readmore--02">旬のレシピ一覧へ</a>
+            <a href="{{ route('recipe.all') . '?type=thisweek'}}" class="c-readmore--02">旬のレシピ一覧へ</a>
           </div>
           <!--旬のレシピスライダー-->
 
@@ -41,7 +41,7 @@
                         <span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span>
                         <span class="recipe-favorite"><i class="icon-heart"></i>{{ $recipe->like }}</span>
                       </div>
-                      <a class="recipe-image" href="#">
+                      <a class="recipe-image" href="{{ route('recipe.show', $recipe->id) }}">
                         <img src="{{ $recipe->image }}" height="150px" width="300px"> </a>
                       <a class="user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
                         <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="26" height="26" class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
@@ -79,7 +79,7 @@
           <!--新着レシピ一覧ー-->
           <div class="c-top-heading">
             <h2 class="c-top-heading__title">新着レシピ</h2>
-            <a href="#" class="c-readmore">新着レシピ一覧へ</a>
+            <a href="{{ route('recipe.all') }}" class="c-readmore">新着レシピ一覧へ</a>
           </div>
           <ul class="c-top-list--recipe">
             @foreach($newRecipes as $recipe)
