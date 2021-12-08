@@ -12,7 +12,6 @@
           <p class="message-success">{{ session('success') }}</p>
         @endif
         <div class="ppCont">
-          <p class="subTtl">旬の一週間レシピ</p>
           <table class="loginTable">
             <tbody>
               <tr>
