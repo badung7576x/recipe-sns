@@ -27,7 +27,7 @@
               </svg>
               旬の一週間レシピ
             </h2>
-            <a href="{{ route('recipe.all') . '?type=thisweek'}}" class="c-readmore--02">旬のレシピ一覧へ</a>
+            <a href="{{ route('recipe.all') . '?type=thisweek' }}" class="c-readmore--02">旬のレシピ一覧へ</a>
           </div>
           <!--旬のレシピスライダー-->
 
@@ -44,7 +44,8 @@
                       <a class="recipe-image" href="{{ route('recipe.show', $recipe->id) }}">
                         <img src="{{ $recipe->image }}" height="150px" width="300px"> </a>
                       <a class="user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
-                        <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="26" height="26" class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
+                        <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="26" height="26"
+                          class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
                     </div>
                     <div class="c-slider-seasonal__cont">
                       <div class="recipe-week">
@@ -82,13 +83,14 @@
             <a href="{{ route('recipe.all') }}" class="c-readmore">新着レシピ一覧へ</a>
           </div>
           <ul class="c-top-list--recipe">
-            @foreach($newRecipes as $recipe)
+            @foreach ($newRecipes as $recipe)
               <li>
                 <div class="c-top-list--recipe__img-wrap">
                   <a href="{{ route('recipe.show', $recipe->id) }}">
                     <img src="{{ $recipe->image }}" class="recipe-image" height="150px" width="300px"> </a>
                   <a class="c-top-list--recipe__user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
-                    <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> {{ $recipe->user->fullname }} </a>
+                    <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" class="user-icon" width="52" height="52"> {{ $recipe->user->fullname }}
+                  </a>
                 </div>
                 <div class="c-top-list--recipe__cont">
                   <div class="inner">
@@ -113,7 +115,7 @@
             {{-- <a href="/ranking?ranking_type=D#PostRank" class="c-side-block__more">一覧へ</a> --}}
           </p>
           <ul class="c-ranking--artist">
-            @foreach($topUsers as $item)
+            @foreach ($topUsers as $item)
               <li>
                 <a href="{{ route('recipe.list', $item->id) }}">
                   <span class="c-ranking__icon">{{ $loop->iteration }}</span>
@@ -123,6 +125,12 @@
               </li>
             @endforeach
           </ul>
+        </div>
+      </div>
+      <div class="c-side-block">
+        <div class="inner">
+          <p class="c-side-block__tit--nobd">広告</p>
+          <a><img src="https://i.ibb.co/B4gGdnK/naninune.png" style="max-width: 100%;"></a>
         </div>
       </div>
     </div>
