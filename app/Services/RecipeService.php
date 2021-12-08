@@ -21,7 +21,7 @@ class RecipeService
         }
     }
 
-    public function getNewRecipes($withPaginate = false)
+    public function getNewRecipes($limit = 15, $withPaginate = false)
     {
         $query = Recipe::with('user')
             ->orderBy('created_at', 'desc');
@@ -29,7 +29,7 @@ class RecipeService
         if ($withPaginate) {
             return $query->paginate(10);
         } else {
-            return $query->take(15)->get();
+            return $query->take($limit)->get();
         }
     }
 

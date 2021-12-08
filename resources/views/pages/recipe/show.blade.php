@@ -91,7 +91,8 @@
         </div><!-- usrCommonCol recipe-->
 
       </section><!-- usrColWrap -->
-
+      <hr>
+      <h1 style="font-size: 24px; text-align:center">開発中</h1>
       <section class="otherRecipeList otherRecipeList--recipe">
         <div class="ttl review">
           <h2>このレシピのコメントや感想を伝えよう！</h2>

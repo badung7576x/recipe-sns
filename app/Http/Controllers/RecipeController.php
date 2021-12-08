@@ -35,7 +35,7 @@ class RecipeController extends BaseController
         } else if ($type == 'recommend') {
             $recipes = $this->recipeService->getRandomRecipes(true);
         } else {
-            $recipes = $this->recipeService->getNewRecipes(true);
+            $recipes = $this->recipeService->getNewRecipes(15, true);
         }
 
         return view('pages.recipe.index', compact('recipes', 'type'));

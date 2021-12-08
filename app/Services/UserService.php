@@ -20,7 +20,7 @@ class UserService
 
     public function getTopUsers()
     {
-        return User::take(3)->get();
+        return User::withCount('recipes')->orderBy('recipes_count', 'desc')->take(3)->get();
     }
 
     public function getAllUsers()

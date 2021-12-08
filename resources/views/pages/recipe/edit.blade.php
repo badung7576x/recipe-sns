@@ -142,7 +142,7 @@
                 </tr>
               @endforeach
               @php $i = $i + 1 @endphp
-              @for($i; $i <= 5; $i++)
+              @for($i; $i <= 10; $i++)
                 <tr>
                   <td>
                     <input type="text" name="material_name[]" value="{{ old('material_name.' . ($i - 1), '') }}" />

@@ -75,13 +75,13 @@ class CreateRecipeRequest extends FormRequest
         $materailUnits = $this->material_unit;
 
         $max = 0;
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             if (isset($materailNames[$i]) || isset($materailQuantities[$i]) || isset($materailUnits[$i])) {
                 $max = $i;
             }
         }
 
-        for ($i = $max + 1; $i < 5; $i++) {
+        for ($i = $max + 1; $i < 10; $i++) {
             unset($materailNames[$i]);
             unset($materailQuantities[$i]);
             unset($materailUnits[$i]);

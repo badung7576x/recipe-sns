@@ -112,7 +112,7 @@
                 <td style="padding-left: 10px">量<span style="color: red;">*</span></td>
                 <td style="">単位<span style="color: red;">*</span></td>
               </tr>
-              @for ($i = 0; $i < 5; $i++)
+              @for ($i = 0; $i < 10; $i++)
                 <tr>
                   <td>
                     <input type="text" name="material_name[]" value="{{ old('material_name.' . $i) }}" />
