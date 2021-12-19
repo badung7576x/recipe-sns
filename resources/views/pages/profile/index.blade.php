@@ -74,7 +74,7 @@
 
                   <ul class="c-user-recipe-list--box__date">
                     <li class="recipe-registdate">{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y') }}</li>
-                    <li><span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span></li>
+                    <li><span class="recipe-time"><i class="icon-timer"></i>{{ convert_time($recipe->cooking_time) }}</span></li>
                   </ul>
 
                   <div class="c-user-recipe-list--box__comment">

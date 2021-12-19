@@ -27,6 +27,18 @@ class RecipeController extends BaseController
         return view('pages.recipe.index', compact('currentUser', 'recipes'));
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->get('keyword');
+        $type = $request->get('type');
+        if(empty($keyword)) return back();
+
+        $recipes = $this->recipeService->searchRecipe($type, $keyword);
+        $type = 'search';
+
+        return view('pages.recipe.index', compact('recipes', 'type', 'keyword'));
+    }
+
     public function list(Request $request)
     {
         $type = $request->get('type');
@@ -43,7 +55,7 @@ class RecipeController extends BaseController
 
     public function show(Recipe $recipe)
     {
-        $recipe = $recipe->load(['user', 'recipe_steps', 'recipe_materials']);
+        $recipe = $recipe->load(['comments.user', 'user', 'recipe_steps', 'recipe_materials']);
         $newRecipes = $this->recipeService->getNewRecipes(3);
 
         return view('pages.recipe.show', compact('recipe', 'newRecipes'));
@@ -88,5 +100,20 @@ class RecipeController extends BaseController
         }
 
         return redirect()->route('user.profile')->with('success', 'レシピを削除しました。');
+    }
+
+    public function comment(Request $request, Recipe $recipe)
+    {
+        $data = $request->validate([
+            'comment' => 'required|string',
+        ]);
+
+        try {
+            $this->recipeService->commentRecipe($recipe, $data);
+        } catch (\Exception $e) {
+            return back()->withErrors(['comment' => 'コメントの投稿に失敗しました。']);
+        }
+
+        return redirect()->route('recipe.show', $recipe->id);
     }
 }

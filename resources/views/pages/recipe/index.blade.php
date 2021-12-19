@@ -11,12 +11,14 @@
               <h2 class="p-user__title"><i class="icon-star"></i>旬のレシピ一覧</h2>
             @elseif(!empty($type) && $type == 'recommend')
               <h2 class="p-user__title"><i class="icon-star"></i>おすすめのレシピ一覧</h2>
+            @elseif(!empty($type) && $type == 'search')
+              <h2 class="p-user__title"><i class="icon-star"></i>「{{ $keyword }}」を検索する結果</h2>
             @else
               <h2 class="p-user__title"><i class="icon-star"></i>レシピ一覧</h2>
             @endif
           @endif
           <ul class="c-user-recipe-list--box">
-            @foreach ($recipes as $recipe)
+            @forelse ($recipes as $recipe)
               <li class="c-user-recipe-list--box__li recipe-427015">
                 <div class="c-user-recipe-list--box__photo">
                   <a href="{{ route('recipe.show', $recipe->id) }}">
@@ -36,7 +38,11 @@
                   </div>
                 </div>
               </li>
-            @endforeach
+            @empty
+              <li class="">
+                <p class="c-user-recipe-list--box__recipe-tit" style="color: red;text-align:center">レシピはありません</p>
+              </li>
+            @endforelse
           </ul>
           {{ $recipes->links('layouts.paginate') }}
         </section>

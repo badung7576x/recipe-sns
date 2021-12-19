@@ -36,7 +36,7 @@
                   <h2 class="heading">材料</h2>
                 </div>
                 <div class="ingredient">
-                  <h3 class="recipeTime"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</h3>
+                  <h3 class="recipeTime"><i class="icon-timer"></i>{{ convert_time($recipe->cooking_time) }}</h3>
                 </div>
               </div>
 
@@ -92,42 +92,48 @@
 
       </section><!-- usrColWrap -->
       <hr>
-      <h1 style="font-size: 24px; text-align:center">開発中</h1>
       <section class="otherRecipeList otherRecipeList--recipe">
         <div class="ttl review">
           <h2>このレシピのコメントや感想を伝えよう！</h2>
         </div>
         <div class="changeBox">
-          <div class="reviewArea">
-            <form action="#" id="reviewForm" method="get">
-              <textarea name="comment" id="review-comment" placeholder="このレシピの感想を入力する"></textarea>
-              <div id="review-message"></div>
-              <div class="btn btnThin float-R margin-T10">
-                <input type="submit" class="btn-inner" value="このレシピの感想を送る" onclick="">
-              </div>
-            </form>
-          </div>
-          <div class="ttl review">
-            <h2>コメント1件</h2>
+          @auth
+            <div class="reviewArea">
+              <form id="comment" action="{{ route('recipe.comment', $recipe->id) }}" method="post">
+                @csrf
+                <textarea name="comment" id="comment-content" placeholder="このレシピの感想を入力する">{{ old('comment', '') }}</textarea>
+                @error('comment')
+                  <p class="error-msg" role="alert">
+                    {{ $message }}
+                  </p>
+                @enderror
+                <div class="btn btnThin float-R margin-T10">
+                  <button type="button" class="btn-inner" onclick="submitComment(event)">このレシピの感想を送る</button>
+                </div>
+              </form>
+            </div>
+          @endauth
+          <div class="review">
+            <h2>コメント{{ count($recipe->comments) }}件</h2>
           </div>
           <ul class="reviewSentArea readmore-js-section" id="reviewBox">
             <!-- コメント▼ -->
-            <li class="reviews review-31878">
-              <form id="reviewReplyForm_31878" method="post">
-                <div class="thmbList review-first">
-                  <div class="phtFrame"><a href="#"><img src="{{ asset('images/common/avatar.png') }}" width="50" height="50" class="scoreUsrPht "></a></div>
-                  <div class="detail balloonComment-right">
-                    <div class="reviewTxt">
-                      <p class="detailTxt">作りました。味は絶品です。病みつきになりますね。白菜1玉で作り置きしてもいいかも。小腹空いた時にも食べたい1品です。</p>
-                      <div class="niceArea">
-                        <p class="daily">2021.01.10 14:45</p>
-                        <p class="usrName"><a href="#">エンジェル<span>さん</span></a></p>
-                      </div>
+            @foreach($recipe->comments as $comment)
+            <li class="reviews">
+              <div class="thmbList review-first">
+                <div class="phtFrame"><a href="#"><img src="{{ $comment->user->avatar ?? asset('images/common/avatar.png') }}" width="50" height="50" class="scoreUsrPht "></a></div>
+                <div class="detail balloonComment-right">
+                  <div class="reviewTxt">
+                    <h4 class="usrName"><a href="{{ route('recipe.list', $comment->user->id) }}">{{ $comment->user->fullname }}<span>さん</span></a></h4>
+                    <p class="detailTxt">{{ $comment->content }}</p>
+                    <div class="niceArea">
+                      <p class="daily">{{ \Carbon\Carbon::parse($comment->created_at)->format('H:i d/m/Y') }}</p>
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </li>
+            @endforeach
             <!-- レビュー▲ -->
           </ul>
 
@@ -174,13 +180,31 @@
               <div class="detail">
                 <p class="recipeName"><a href="{{ route('recipe.show', $recipe->id) }}">{{ $recipe->name }}</a></p>
                 <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y ') }}</span> <i
-                    class="icon-timer margin-L10"></i>{{ $recipe->cooking_time }}分</p>
+                    class="icon-timer margin-L10"></i>{{ convert_time($recipe->cooking_time) }}</p>
               </div>
             </li>
           @endforeach
         </ul>
+        <div class="c-side-block">
+          <div class="inner">
+            <p class="c-side-block__tit--nobd">広告</p>
+            <a><img src="https://i.ibb.co/B4gGdnK/naninune.png" style="max-width: 100%;"></a>
+          </div>
+        </div>
       </section>
 
     </div>
   </article>
+
+  <script>
+    function submitComment(e) {
+      var name = $('#comment-content').val().trim();
+      if(name == '') {
+        alert('コメントを入力してください');
+        return false;
+      } else {
+        $('#comment').submit();
+      }
+    }
+  </script>
 @endsection

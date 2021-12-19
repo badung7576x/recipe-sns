@@ -28,6 +28,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::get('users', 'ProfileController@list')->name('user.list');
     Route::get('recipes', 'RecipeController@index')->name('recipe.index');
     Route::get('recipes/list', 'RecipeController@list')->name('recipe.all');
+    Route::get('recipes/search', 'RecipeController@search')->name('recipe.search');
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('user.profile');
@@ -38,6 +39,8 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
         Route::get('recipes/{recipe}/edit', 'RecipeController@edit')->name('recipe.edit');
         Route::post('recipes/{recipe}/update', 'RecipeController@update')->name('recipe.update');
         Route::get('recipes/{recipe}/delete', 'RecipeController@delete')->name('recipe.delete');
+
+        Route::post('recipes/{recipe}/comment', 'RecipeController@comment')->name('recipe.comment');
     });
 
     Route::get('recipes/{recipe}', 'RecipeController@show')->name('recipe.show');

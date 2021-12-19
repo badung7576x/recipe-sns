@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="ppBody" style="height: 550px">
+  <div class="ppBody" style="height: 600px">
     <form action="{{ route('login-post') }}" method="post" accept-charset="utf-8">
       @csrf
       <div class="ppWrap" id="loginForm">

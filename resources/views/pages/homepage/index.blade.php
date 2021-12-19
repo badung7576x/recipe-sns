@@ -38,7 +38,7 @@
                   <li class="swiper-slide">
                     <div class="c-slider-seasonal__image">
                       <div class="c-slider-seasonal__st">
-                        <span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span>
+                        <span class="recipe-time"><i class="icon-timer"></i>{{ convert_time($recipe->cooking_time) }}</span>
                         <span class="recipe-favorite"><i class="icon-heart"></i>{{ $recipe->like }}</span>
                       </div>
                       <a class="recipe-image" href="{{ route('recipe.show', $recipe->id) }}">
@@ -95,7 +95,7 @@
                 <div class="c-top-list--recipe__cont">
                   <div class="inner">
                     <span class="time-stamp">{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y') }}</span>
-                    <span class="recipe-time"><i class="icon-timer"></i>{{ $recipe->cooking_time }}分</span>
+                    <span class="recipe-time"><i class="icon-timer"></i>{{ convert_time($recipe->cooking_time) }}</span>
                   </div>
                   <a class="recipe-title" href="{{ route('recipe.show', $recipe->id) }}">
                     <h3>

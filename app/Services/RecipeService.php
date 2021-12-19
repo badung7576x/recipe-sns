@@ -43,6 +43,18 @@ class RecipeService
             return $query->take(15)->get();
         }
     }
+
+    public function getRecommendRecipes ($withPaginate = false) {
+        $query = Recipe::with('user')
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc');
+            
+        if ($withPaginate) {
+            return $query->paginate(10);
+        } else {
+            return $query->take(15)->get();
+        }
+    }
     
     public function getRecipeByUser($userId = null, $withPaginate = false)
     {
@@ -163,6 +175,35 @@ class RecipeService
             DB::rollBack();
             Log::error($e->getMessage());
             throw new \Exception('レシピの削除が失敗しました。');
+        }
+    }
+
+    public function commentRecipe($recipe, $data) 
+    {
+        try {
+            $recipe->comments()->create([
+                'user_id' => auth()->user()->id,
+                'content' => $data['comment']
+            ]);
+        } catch (\Exception $e) {
+            throw new \Exception('コメントの投稿に失敗しました。');
+        }
+    }
+
+    public function searchRecipe($type, $keyword) {
+        switch($type) {
+            case 'user':
+                return Recipe::whereHas('user', function($query) use ($keyword) {
+                    $query->where('name', 'like', '%'.$keyword.'%');
+                })->paginate(10);
+            case 'material':
+                return Recipe::whereHas('recipe_materials', function($query) use ($keyword) {
+                    $query->where('name', 'like', '%'.$keyword.'%');
+                })->paginate(10);
+            case 'name':
+                return Recipe::where('name', 'like', '%'.$keyword.'%')->paginate(10);
+            default:
+                return Recipe::take(10)->paginate(10);;
         }
     }
 }

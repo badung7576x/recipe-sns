@@ -6,15 +6,14 @@
       </a>
     </div>
     <div class="searchArea">
-      <form name="search_form" class="csSearch" method="get" action="#" itemprop="potentialAction" itemscope="itemscope">
+      <form name="search_form" class="csSearch" method="get" action="{{ route('recipe.search') }}">
         <div class="horizontal-block">
           <select name="type" id="type">
-            <option value="" selected="">レシピから検索</option>
-            <option value="記事">記事から検索</option>
-            <option value="Artist">Artistから検索</option>
+            <option value="name" @if (request()->type == 'name') selected @endif>料理名で検索</option>
+            <option value="material" @if (request()->type == 'material') selected @endif>調理材料名で検索</option>
+            <option value="user" @if (request()->type == 'user') selected @endif>アーティストで検索</option>
           </select>
-          <input type="text" name="q" id="headerkeyword" autocomplete="off" value="" placeholder="料理名・食材名・イベント名" itemprop="query-input" class="ui-autocomplete-input" role="textbox"
-            aria-autocomplete="list" aria-haspopup="true">
+          <input name="keyword" type="text" id="headerkeyword" value="{{ request()->keyword }}" placeholder="料理名・調理材料名・アーティスト">
         </div>
       </form>
     </div>
@@ -49,9 +48,19 @@
     <ul>
       <li><a href="{{ route('recipe.all') }}">レシピ</a></li>
       <li><a href="{{ route('developing') }}">ランキング</a></li>
-      <li><a href="{{ route('recipe.all') . '?type=recommend'}}">おすすめ</a></li>
+      <li><a href="{{ route('recipe.all') . '?type=recommend' }}">おすすめ</a></li>
       <li><a href="{{ route('user.list') }}">Artist</a></li>
       <li><a href="{{ route('developing') }}">Starsとは</a></li>
     </ul>
   </nav>
+  {{-- <script>
+    $(document).ready(function() {
+      $('input[name=keyword]').keydown(function(e) {
+        var keyword = $('input[name=keyword]').val().trim();
+        if (e.which == 13 && keyword != '') {
+          $('#search_form').submit();
+        }
+      });
+    });
+  </script> --}}
 </header>
