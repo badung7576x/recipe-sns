@@ -16,6 +16,11 @@ class ModifyMultipleTable extends Migration
         Schema::table('comments', function (Blueprint $table) {
             $table->text('content')->change();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('banner')->nullable();
+        });
+
     }
 
     /**
@@ -27,6 +32,10 @@ class ModifyMultipleTable extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->string('content')->change();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('banner');
         });
     }
 }

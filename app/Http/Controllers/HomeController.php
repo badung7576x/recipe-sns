@@ -30,4 +30,23 @@ class HomeController extends BaseController
     public function developing() {
         return view('layouts.temp');
     }
+
+    public function introduce() {
+        return view('pages.introduce.index');
+    } 
+
+    public function rankUsers()
+    {
+        $users = $this->userService->getAllUsers();
+
+        return view('pages.rank.users', compact('users'));
+    }
+
+    public function rankRecipes()
+    {
+        $recipes = $this->recipeService->getTopRecipes();
+
+        return view('pages.rank.recipes', compact('recipes'));
+    }
+
 }

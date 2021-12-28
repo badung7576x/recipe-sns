@@ -203,7 +203,12 @@ class RecipeService
             case 'name':
                 return Recipe::where('name', 'like', '%'.$keyword.'%')->paginate(10);
             default:
-                return Recipe::take(10)->paginate(10);;
+                return Recipe::take(10)->paginate(10);
         }
+    }
+
+    public function getTopRecipes()
+    {
+        return Recipe::orderBy('created_at', 'desc')->paginate(10);
     }
 }

@@ -25,15 +25,19 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
     Route::get('/developing', 'HomeController@developing')->name('developing');
     
     Route::get('', 'HomeController@index')->name('index');
+    Route::get('introduce', 'HomeController@introduce')->name('introduce');
     Route::get('users', 'ProfileController@list')->name('user.list');
     Route::get('recipes', 'RecipeController@index')->name('recipe.index');
     Route::get('recipes/list', 'RecipeController@list')->name('recipe.all');
     Route::get('recipes/search', 'RecipeController@search')->name('recipe.search');
+    Route::get('rank/users', 'HomeController@rankUsers')->name('rank.users');
+    Route::get('rank/recipes', 'HomeController@rankRecipes')->name('rank.recipes');
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', 'ProfileController@index')->name('user.profile');
         Route::get('users/{user}/edit', 'ProfileController@edit')->name('user.edit');
         Route::post('users/{user}/edit', 'ProfileController@update')->name('user.update');
+        Route::post('users/{user}/change-banner', 'ProfileController@updateBanner')->name('user.update.banner');
         Route::get('recipes/create', 'RecipeController@create')->name('recipe.create');
         Route::post('recipes/create', 'RecipeController@store')->name('recipe.store');
         Route::get('recipes/{recipe}/edit', 'RecipeController@edit')->name('recipe.edit');

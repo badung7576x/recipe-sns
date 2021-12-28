@@ -50,4 +50,21 @@ class ProfileController extends BaseController
 
         return redirect()->route('user.profile')->with('success-profile', 'プロフィールを更新しました。');
     }
+
+    public function updateBanner(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'banner' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        try {
+            $this->userService->updateBanner($user, $data);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['banner' => $e->getMessage()]);
+        }
+
+        return redirect()->route('user.profile');
+
+
+    }
 }

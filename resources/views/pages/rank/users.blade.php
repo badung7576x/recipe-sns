@@ -4,7 +4,7 @@
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
-        <h2 class="p-user__title"><i class="icon-star"></i>ユーザー一覧</h2>
+        <h2 class="p-user__title"><i class="icon-star"></i>トップのユーザー一覧</h2>
           
           <ul class="c-user-recipe-list--box">
             @foreach ($users as $item)

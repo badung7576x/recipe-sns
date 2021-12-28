@@ -49,4 +49,22 @@ class UserService
             throw new \Exception('プロフィールの更新に失敗しました。');
         }
     }
+
+    public function updateBanner($user, $data) 
+    {
+        try {
+            if (!empty($data['banner'])) {
+                $uploadService = new UploadImageService();
+                $image = $uploadService->upload($data['banner']->get());
+            }
+            $updateData = [
+                'banner' => $image['url'],
+            ];
+        
+            $user->update($updateData);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            throw new \Exception('広告の更新に失敗しました。');
+        }
+    }
 }

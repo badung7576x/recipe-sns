@@ -1,41 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="l-contents">
-    <div class="l-contents__right">
-      <section class="c-side-block--user">
-        <div class="inner">
-          <div class="p-user-profile--side">
-            <img src="{{ $user->avatar ?? asset('images/common/avatar.png') }}" class="p-user-profile--side__image" width="500" height="500" />
-            <div class="p-user-profile--side__contents">
-              <h2 class="p-user-profile--side__name">{{ $user->fullname ?? '' }}</h2>
-              <ul class="p-user-profile__follow">
-                <li style="margin-left: 5%; width: 85%;"><a href="#">レシピ数<span>{{ $recipeCounts }}</span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <div class="l-contents__right" style="width: 760px">
-      <section class="c-side-block--user margin-L10" style="height: max-content;">
-        <div class="inner">
-          <div class="p-user-profile--side">
-            <div class="p-user-profile--side__contents">
-              <div class="p-user-profile--side__heading01" style="font-size: 25px">
-                自己紹介
-                <div class="btn btnLarge" style="float:right;">
-                  <a href="{{ route('user.edit', $user->id) }}" class="btn-inner">編集</a>
-                </div>
-              </div>
-              <div class="p-user-profile--side__contents--text margin-T40">
-                <p>{{ $user->description }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+  @include('pages.profile.profile_top')
   <div class="l-contents">
     <div class="l-contents__main">
       <div class="p-user--recipe">

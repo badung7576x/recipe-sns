@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="l-contents">
+  <div class="l-contents" style="min-height: 650px">
     <div class="l-contents__main" style="">
       <div class="p-top" style="width: 744px;">
         <section class="p-top__box">
@@ -30,49 +30,54 @@
             <a href="{{ route('recipe.all') . '?type=thisweek' }}" class="c-readmore--02">旬のレシピ一覧へ</a>
           </div>
           <!--旬のレシピスライダー-->
+          @if (count($recipesThisWeek) > 0)
+            <div class="p-top__slider">
+              <div class="swiper-container mySwiper c-slider-seasonal">
+                <ul class="swiper-wrapper">
+                  @foreach ($recipesThisWeek as $recipe)
+                    <li class="swiper-slide">
+                      <div class="c-slider-seasonal__image">
+                        <div class="c-slider-seasonal__st">
+                          <span class="recipe-time"><i class="icon-timer"></i>{{ convert_time($recipe->cooking_time) }}</span>
+                          <span class="recipe-favorite"><i class="icon-heart"></i>{{ $recipe->like }}</span>
+                        </div>
+                        <a class="recipe-image" href="{{ route('recipe.show', $recipe->id) }}">
+                          <img src="{{ $recipe->image }}" height="150px" width="300px"> </a>
+                        <a class="user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
+                          <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="26" height="26"
+                            class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
+                      </div>
+                      <div class="c-slider-seasonal__cont">
+                        <div class="recipe-week">
+                          <p>
+                            <span class="day">{{ \Carbon\Carbon::parse($recipe->created_at)->day }}</span><br>
+                            <span class="dow">{{ \Carbon\Carbon::parse($recipe->created_at)->format('M') }}</span>
+                          </p>
+                        </div>
 
-          <div class="p-top__slider">
-            <div class="swiper-container mySwiper c-slider-seasonal">
-              <ul class="swiper-wrapper">
-                @foreach ($recipesThisWeek as $recipe)
-                  <li class="swiper-slide">
-                    <div class="c-slider-seasonal__image">
-                      <div class="c-slider-seasonal__st">
-                        <span class="recipe-time"><i class="icon-timer"></i>{{ convert_time($recipe->cooking_time) }}</span>
-                        <span class="recipe-favorite"><i class="icon-heart"></i>{{ $recipe->like }}</span>
+                        <div class="c-slider-seasonal__info">
+                          <a class="recipe-title" href="{{ route('recipe.show', $recipe->id) }}">
+                            <h3 class="recipe-title">{{ $recipe->name }}</h3>
+                          </a>
+                        </div>
                       </div>
-                      <a class="recipe-image" href="{{ route('recipe.show', $recipe->id) }}">
-                        <img src="{{ $recipe->image }}" height="150px" width="300px"> </a>
-                      <a class="user-name" href="{{ route('recipe.list', $recipe->user->id) }}">
-                        <img src="{{ $recipe->user->avatar ?? asset('images/common/avatar.png') }}" width="26" height="26"
-                          class="user-icon">{{ $recipe->user->fullname ?? '' }}</a>
-                    </div>
-                    <div class="c-slider-seasonal__cont">
-                      <div class="recipe-week">
-                        <p>
-                          <span class="day">{{ \Carbon\Carbon::parse($recipe->created_at)->day }}</span><br>
-                          <span class="dow">{{ \Carbon\Carbon::parse($recipe->created_at)->format('M') }}</span>
-                        </p>
-                      </div>
-
-                      <div class="c-slider-seasonal__info">
-                        <a class="recipe-title" href="{{ route('recipe.show', $recipe->id) }}">
-                          <h3 class="recipe-title">{{ $recipe->name }}</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                @endforeach
-              </ul>
+                    </li>
+                  @endforeach
+                </ul>
+              </div>
+              <div class="swiper-button-next swiper-button-next--seasonal">
+                <i class="icon-angle-right"></i>
+              </div>
+              <div class="swiper-button-prev swiper-button-prev--seasonal">
+                <i class="icon-angle-right"></i>
+              </div>
+              <div class="swiper-pagination swiper-pagination--seasonal" style="width: 20%"></div>
             </div>
-            <div class="swiper-button-next swiper-button-next--seasonal">
-              <i class="icon-angle-right"></i>
-            </div>
-            <div class="swiper-button-prev swiper-button-prev--seasonal">
-              <i class="icon-angle-right"></i>
-            </div>
-            <div class="swiper-pagination swiper-pagination--seasonal" style="width: 20%"></div>
-          </div>
+          @else
+            <li class="">
+              <p class="c-user-recipe-list--box__recipe-tit" style="color: red;text-align:center">レシピはありません</p>
+            </li>
+          @endif
         </section>
 
         <section class="p-top__box">
@@ -111,7 +116,7 @@
     <div class="l-contents__right">
       <div class="c-side-block">
         <div class="inner">
-          <p class="c-side-block__tit--nobd">最近のユーザー
+          <p class="c-side-block__tit--nobd">トップのユーザー
             {{-- <a href="/ranking?ranking_type=D#PostRank" class="c-side-block__more">一覧へ</a> --}}
           </p>
           <ul class="c-ranking--artist">

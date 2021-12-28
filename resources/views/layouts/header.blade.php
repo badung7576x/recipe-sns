@@ -40,6 +40,7 @@
               </li>
             </ul>
           </li>
+          <li class="hIconFeature"><a href="{{ route('recipe.create') }}">レシピ投稿</a></li>
         @endif
       </ul>
     </div>
@@ -47,10 +48,25 @@
   <nav class="gNav">
     <ul>
       <li><a href="{{ route('recipe.all') }}">レシピ</a></li>
-      <li><a href="{{ route('developing') }}">ランキング</a></li>
+      <script>
+        function showRank() {
+          $('.menuB').toggleClass('d-none');
+        }
+      </script>
+      <li class="rankMenu">
+        <a href="javascript:void();" onclick="showRank()">ランキング</a>
+        <ul class="menuB d-none">
+          <li>
+            <a href="{{ route('rank.users') }}">ユーザー</a>
+          </li>
+          <li>
+            <a href="{{ route('rank.recipes') }}">レシピ</a>
+          </li>
+        </ul>
+      </li>
       <li><a href="{{ route('recipe.all') . '?type=recommend' }}">おすすめ</a></li>
       <li><a href="{{ route('user.list') }}">Artist</a></li>
-      <li><a href="{{ route('developing') }}">Starsとは</a></li>
+      <li><a href="{{ route('introduce') }}">Starsとは</a></li>
     </ul>
   </nav>
   {{-- <script>

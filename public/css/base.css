@@ -3903,7 +3903,7 @@ header .hNavArea .rightNavArea .loginUsr ul {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 header .hNavArea .rightNavArea .loginUsr ul a {
@@ -3923,6 +3923,55 @@ header .hNavArea .rightNavArea .loginUsr ul a:hover {
     color: #ffc300;
     background: #320a00
 }
+
+
+.rankMenu {
+    float: right;
+    /* border-right: 1px solid #d2c8be; */
+    background: 0 0;
+    position: relative;
+    z-index: 100;
+}
+
+.rankMenu a {
+    font-size: 1rem;
+    color: #916E28;
+    text-align: center;
+    font-weight: 700;
+    padding: 20px 10px 0 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block
+}
+
+.rankMenu ul {
+    width: fit-content !important;
+    background: #af8728;
+    border-left: 1px solid #956D45;
+    border-right: 1px solid #956D45;
+    position: absolute;
+    z-index: 10;
+    top: 45px;
+}
+
+.rankMenu ul a {
+    line-height: 30px;
+    padding: 0 8px;
+    font-size: 1rem;
+    color: #fff;
+    border-bottom: 1px solid #956D45;
+    display: block;
+    font-weight: 700;
+    text-align: left
+}
+
+.rankMenu ul a:hover {
+    color: #ffc300;
+    background: #320a00;
+}
+
+
 /*投稿ドロップダウン*/
 header .hNavArea .rightNavArea .hIconPost ul {
     display: none;

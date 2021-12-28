@@ -118,21 +118,22 @@
           </div>
           <ul class="reviewSentArea readmore-js-section" id="reviewBox">
             <!-- コメント▼ -->
-            @foreach($recipe->comments as $comment)
-            <li class="reviews">
-              <div class="thmbList review-first">
-                <div class="phtFrame"><a href="#"><img src="{{ $comment->user->avatar ?? asset('images/common/avatar.png') }}" width="50" height="50" class="scoreUsrPht "></a></div>
-                <div class="detail balloonComment-right">
-                  <div class="reviewTxt">
-                    <h4 class="usrName"><a href="{{ route('recipe.list', $comment->user->id) }}">{{ $comment->user->fullname }}<span>さん</span></a></h4>
-                    <p class="detailTxt">{{ $comment->content }}</p>
-                    <div class="niceArea">
-                      <p class="daily">{{ \Carbon\Carbon::parse($comment->created_at)->format('H:i d/m/Y') }}</p>
+            @foreach ($recipe->comments as $comment)
+              <li class="reviews">
+                <div class="thmbList review-first">
+                  <div class="phtFrame"><a href="#"><img src="{{ $comment->user->avatar ?? asset('images/common/avatar.png') }}" width="50" height="50"
+                        class="scoreUsrPht "></a></div>
+                  <div class="detail balloonComment-right">
+                    <div class="reviewTxt">
+                      <h4 class="usrName"><a href="{{ route('recipe.list', $comment->user->id) }}">{{ $comment->user->fullname }}<span>さん</span></a></h4>
+                      <p class="detailTxt">{{ $comment->content }}</p>
+                      <div class="niceArea">
+                        <p class="daily">{{ \Carbon\Carbon::parse($comment->created_at)->format('H:i d/m/Y') }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
             @endforeach
             <!-- レビュー▲ -->
           </ul>
@@ -185,12 +186,14 @@
             </li>
           @endforeach
         </ul>
-        <div class="c-side-block">
-          <div class="inner">
-            <p class="c-side-block__tit--nobd">広告</p>
-            <a><img src="https://i.ibb.co/B4gGdnK/naninune.png" style="max-width: 100%;"></a>
+        @if (!empty($recipe->user->banner))
+          <div class="c-side-block">
+            <div class="inner">
+              <p class="c-side-block__tit--nobd">広告</p>
+              <a><img src="{{ $recipe->user->banner }}" style="max-width: 100%;"></a>
+            </div>
           </div>
-        </div>
+        @endif
       </section>
 
     </div>
@@ -199,7 +202,7 @@
   <script>
     function submitComment(e) {
       var name = $('#comment-content').val().trim();
-      if(name == '') {
+      if (name == '') {
         alert('コメントを入力してください');
         return false;
       } else {
