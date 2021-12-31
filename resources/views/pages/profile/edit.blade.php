@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="ppBody">
+  <div class="ppBody" style="min-height: 650px">
     <form action="{{ route('user.edit', $currentUser->id) }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="ppWrap" id="loginForm">

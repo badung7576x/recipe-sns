@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <article class="baseWrap">
+  <article class="baseWrap" style="min-height: 650px">
     <!-- 左カラム開始 -->
     <div class="mainWrap mainWrap--recipe">
       <section class="usrColWrap">

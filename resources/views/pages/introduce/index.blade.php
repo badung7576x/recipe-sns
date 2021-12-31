@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <article class="baseWrap" id="pageTop">
+  <article class="baseWrap" id="pageTop" style="min-height: 650px">
     <div class="wrapper">
       <div id="intro">
         <h1>

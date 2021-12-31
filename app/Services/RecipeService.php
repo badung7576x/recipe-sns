@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Recipe;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -193,9 +194,7 @@ class RecipeService
     public function searchRecipe($type, $keyword) {
         switch($type) {
             case 'user':
-                return Recipe::whereHas('user', function($query) use ($keyword) {
-                    $query->where('name', 'like', '%'.$keyword.'%');
-                })->paginate(10);
+                return User::where('fullname', 'like', '%'.$keyword.'%')->paginate(10);
             case 'material':
                 return Recipe::whereHas('recipe_materials', function($query) use ($keyword) {
                     $query->where('name', 'like', '%'.$keyword.'%');

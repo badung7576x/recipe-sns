@@ -1,4 +1,4 @@
-<div class="l-contents">
+<div class="l-contents" style="min-height: 650px">
   <div class="l-contents__right">
     <section class="c-side-block--user">
       <div class="inner">

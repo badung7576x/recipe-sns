@@ -33,6 +33,12 @@ class RecipeController extends BaseController
         $type = $request->get('type');
         if(empty($keyword)) return back();
 
+        if($type == 'user') {
+            $users = $this->recipeService->searchRecipe($type, $keyword);
+            
+            return view('pages.profile.list', compact('users'));
+        }
+
         $recipes = $this->recipeService->searchRecipe($type, $keyword);
         $type = 'search';
 

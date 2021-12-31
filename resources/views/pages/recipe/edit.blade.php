@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
   @include('pages.profile.profile_top')
-  <div class="l-contents">
+  <div class="l-contents" style="min-height: 650px">
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
