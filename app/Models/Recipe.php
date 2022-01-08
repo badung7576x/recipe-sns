@@ -14,6 +14,7 @@ class Recipe extends Model
         'user_id',
         'image',
         'like',
+        'user_like',
         'cooking_time',
         'description',
         'note'
@@ -37,5 +38,10 @@ class Recipe extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'recipe_id', 'id');
+    }
+
+    public function getUserLikeAttribute($value)
+    {
+        return $value ? explode(',', $value) : [];
     }
 }

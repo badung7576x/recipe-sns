@@ -22,9 +22,10 @@ class HomeController extends BaseController
     {
         $recipesThisWeek = $this->recipeService->getRecipesOnThisWeek();
         $newRecipes = $this->recipeService->getNewRecipes();
+        $top3Recipes = $this->recipeService->getNewRecipes(3, false, true);
         $topUsers = $this->userService->getTopUsers();
 
-        return view('pages.homepage.index', compact('recipesThisWeek', 'newRecipes', 'topUsers'));
+        return view('pages.homepage.index', compact('recipesThisWeek', 'newRecipes', 'top3Recipes', 'topUsers'));
     }
 
     public function developing() {

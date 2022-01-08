@@ -132,6 +132,26 @@
           </ul>
         </div>
       </div>
+
+      <div class="c-side-block">
+        <div class="inner">
+          <p class="c-side-block__tit--nobd">トップのレシピ
+          </p>
+          <ul class="c-ranking--recipe">
+            @foreach ($top3Recipes as $recipeItem)
+              <li class="thmbList">
+                <div class="phtFrame"><a href="#"><img src="{{ $recipeItem->image }}" width="60"></a></div>
+                <div class="detail">
+                  <p class="recipeName"><a href="{{ route('recipe.show', $recipeItem->id) }}">{{ $recipeItem->name }}</a></p>
+                  <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipeItem->created_at)->format('d/m/Y ') }}</span> <i
+                      class="icon-timer margin-L10"></i>{{ convert_time($recipeItem->cooking_time) }}</p>
+                </div>
+              </li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+
       <div class="c-side-block">
         <div class="inner">
           <p class="c-side-block__tit--nobd">広告</p>

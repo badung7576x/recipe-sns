@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="l-contents" style="min-height: 650px">
+  <div class="l-contents" style="min-height: 550px;">
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">

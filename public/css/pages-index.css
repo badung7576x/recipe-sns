@@ -2826,6 +2826,49 @@ body {
   flex-flow: row wrap;
 }
 
+.c-ranking--recipe {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.c-ranking--recipe li {
+  zoom: 1;
+  border-bottom: 1px dotted #d2c8be;
+  padding: 15px 10px;
+  margin: 0;
+}
+
+.c-ranking--recipe li.thmbList .detail {
+  width: 198px
+}
+
+.c-ranking--recipe li.thmbList .detail .detailTxt, .c-ranking--recipe li.thmbList .detail .detailTxt a, .c-ranking--recipe li.thmbList .detail .subttl a {
+  width: 198px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block
+}
+
+.c-ranking--recipe li:first-child {
+  border-top: 1px solid #5a320a;
+  padding: 15px 10px;
+  margin: 0;
+}
+
+.c-ranking--recipe li:last-child {
+  border-bottom: none
+}
+
+
+
 .c-ranking--artist li {
   margin-right: 8px;
   -webkit-box-flex: 0;

@@ -65,7 +65,7 @@
         </ul>
       </li>
       <li><a href="{{ route('recipe.all') . '?type=recommend' }}">おすすめ</a></li>
-      <li><a href="{{ route('user.list') }}">Artist</a></li>
+      <li><a href="{{ route('user.list') }}">アーティスト</a></li>
       <li><a href="{{ route('introduce') }}">Starsとは</a></li>
     </ul>
   </nav>

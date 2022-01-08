@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-  <div class="l-contents"　style="min-height: 650px">
+  <div class="l-contents" style="min-height: 550px;">
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
@@ -64,11 +64,11 @@
             </div>
           </div>
         </section>
-        @if (!empty($user->banner))
+        @if (!empty($currentUser->banner))
           <div class="c-side-block">
             <div class="inner">
               <p class="c-side-block__tit--nobd">広告</p>
-              <a><img src="{{ $user->banner }}" style="max-width: 100%;"></a>
+              <a><img src="{{ $currentUser->banner }}" style="max-width: 100%;"></a>
             </div>
           </div>
         @endif

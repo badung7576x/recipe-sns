@@ -122,4 +122,13 @@ class RecipeController extends BaseController
 
         return redirect()->route('recipe.show', $recipe->id);
     }
+
+    public function reaction(Request $request, Recipe $recipe)
+    {
+        $data = $request->all();
+
+        $this->recipeService->reactionRecipe($recipe, $data);
+
+        return redirect()->route('recipe.show', $recipe->id);
+    }
 }

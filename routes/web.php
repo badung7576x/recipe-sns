@@ -45,6 +45,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
         Route::get('recipes/{recipe}/delete', 'RecipeController@delete')->name('recipe.delete');
 
         Route::post('recipes/{recipe}/comment', 'RecipeController@comment')->name('recipe.comment');
+        Route::get('recipes/{recipe}/reaction', 'RecipeController@reaction')->name('recipe.reaction');
     });
 
     Route::get('recipes/{recipe}', 'RecipeController@show')->name('recipe.show');

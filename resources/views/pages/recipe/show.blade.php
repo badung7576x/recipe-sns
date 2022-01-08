@@ -1,15 +1,26 @@
 @extends('layouts.master')
 @section('content')
-  <article class="baseWrap" style="min-height: 650px">
+  <article class="baseWrap">
     <!-- 左カラム開始 -->
     <div class="mainWrap mainWrap--recipe">
       <section class="usrColWrap">
         <div class="usrCommonCol recipe">
           <div class="recipeNameArea">
             <ul class="scoreArea">
-              <li>
-                <span class="recipe-favorite"><i class="icon-heart"></i> {{ $recipe->like }}</span>
-              </li>
+              @if (empty($user))
+                <li>
+                  <span class="recipe-favorite"><i class="icon-heart"></i> {{ $recipe->like }}</span>
+                </li>
+              @else
+                <li>
+                  <a href="{{ route('recipe.reaction', ['recipe' => $recipe->id]) }}">
+                    <span class="recipe-favorite">
+                      <i class="icon-heart" style="color:{{ in_array($user->id, $recipe->user_like) ? 'red' : 'gray' }}"></i>
+                      {{ $recipe->like }}
+                    </span>
+                  </a>
+                </li>
+              @endif
             </ul>
             <h1 class="recipeName">{{ $recipe->name }}</h1>
           </div>
@@ -175,13 +186,13 @@
           <li class="ttl nadiaNewRecipe">
             新着レシピ
           </li>
-          @foreach ($newRecipes as $recipe)
+          @foreach ($newRecipes as $recipeItem)
             <li class="thmbList">
-              <div class="phtFrame"><a href="#"><img src="{{ $recipe->image }}" width="60"></a></div>
+              <div class="phtFrame"><a href="#"><img src="{{ $recipeItem->image }}" width="60"></a></div>
               <div class="detail">
-                <p class="recipeName"><a href="{{ route('recipe.show', $recipe->id) }}">{{ $recipe->name }}</a></p>
-                <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipe->created_at)->format('d/m/Y ') }}</span> <i
-                    class="icon-timer margin-L10"></i>{{ convert_time($recipe->cooking_time) }}</p>
+                <p class="recipeName"><a href="{{ route('recipe.show', $recipeItem->id) }}">{{ $recipeItem->name }}</a></p>
+                <p class="recipeTime"><span>{{ \Carbon\Carbon::parse($recipeItem->created_at)->format('d/m/Y ') }}</span> <i
+                    class="icon-timer margin-L10"></i>{{ convert_time($recipeItem->cooking_time) }}</p>
               </div>
             </li>
           @endforeach

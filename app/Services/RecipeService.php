@@ -22,20 +22,25 @@ class RecipeService
         }
     }
 
-    public function getNewRecipes($limit = 15, $withPaginate = false)
+    public function getNewRecipes($limit = 15, $withPaginate = false, $top = false)
     {
-        $query = Recipe::with('user')
-            ->orderBy('created_at', 'desc');
+        $query = Recipe::with('user');
             
         if ($withPaginate) {
-            return $query->paginate(10);
+            return $query->orderBy('created_at', 'desc')->paginate(10);
         } else {
-            return $query->take($limit)->get();
+            if($top) {
+                return $query->orderBy('like', 'desc')->take($limit)->get();
+            } else {
+                return $query->orderBy('created_at', 'desc')->take($limit)->get();
+            }
         }
     }
 
     public function getRandomRecipes ($withPaginate = false) {
-        $query = Recipe::inRandomOrder()->with('user')
+        $query = Recipe::with('user')
+            ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->orderBy('like', 'desc')
             ->orderBy('created_at', 'desc');
             
         if ($withPaginate) {
@@ -208,6 +213,23 @@ class RecipeService
 
     public function getTopRecipes()
     {
-        return Recipe::orderBy('created_at', 'desc')->paginate(10);
+        return Recipe::orderBy('like', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+    }
+
+    public function reactionRecipe($recipe, $data) 
+    {
+        $user = auth()->user();
+        if(!$user) return;
+
+        $likes = $recipe->user_like;
+        if(in_array($user->id, $likes)) {
+            $likes = array_diff($likes, [$user->id]);
+        } else {
+            $likes[] = $user->id;
+        }
+
+        $recipe->user_like = count($likes) > 0 ? implode(',', $likes) : null;
+        $recipe->like = count($likes);
+        $recipe->save();
     }
 }

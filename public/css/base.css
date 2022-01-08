@@ -3931,6 +3931,14 @@ header .hNavArea .rightNavArea .loginUsr ul a:hover {
     background: 0 0;
     position: relative;
     z-index: 100;
+
+    background-image: url(../images/common/select_down.png);
+    background-repeat: no-repeat,no-repeat, no-repeat;
+    background-position: 106px 19px, left,left;
+    background-size: 8px, 100%, 100%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .rankMenu a {

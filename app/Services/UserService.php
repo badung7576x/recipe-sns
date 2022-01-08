@@ -25,7 +25,7 @@ class UserService
 
     public function getAllUsers()
     {
-        return User::orderBy('created_at', 'desc')->get();
+        return User::withCount('recipes')->orderBy('recipes_count', 'desc')->orderBy('created_at', 'desc')->get();
     }
 
     public function updateProfile($user, $data)
