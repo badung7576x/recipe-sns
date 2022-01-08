@@ -4,10 +4,9 @@
     <div class="l-contents__main">
       <div class="p-user--recipe">
         <section class="p-user__inner" id="p-user__recipe">
-        <h2 class="p-user__title"><i class="icon-star"></i>ユーザー一覧</h2>
-          
+          <h2 class="p-user__title"><i class="icon-star"></i>ユーザー一覧</h2>
           <ul class="c-user-recipe-list--box">
-            @foreach ($users as $item)
+            @forelse ($users as $item)
               <li class="c-user-recipe-list--box__li recipe-427015">
                 <div class="c-user-recipe-list--box__photo">
                   <a href="{{ route('recipe.list', $item->id) }}">
@@ -23,7 +22,11 @@
                   </div>
                 </div>
               </li>
-            @endforeach
+            @empty
+              <li class="">
+                <p class="c-user-recipe-list--box__recipe-tit" style="color: red;text-align:center">ユーザーはありません</p>
+              </li>
+            @endforelse
           </ul>
         </section>
       </div>
