@@ -105,11 +105,11 @@
                   </td>
                 </tr>
               @endfor
-              {{-- <tr style="cursor: pointer; " class="create-recipe-add-material">
+              <tr style="cursor: pointer; " class="create-recipe-add-material">
                 <td colspan="3" style="text-align: center; ">
                   +
                 </td>
-              </tr> --}}
+              </tr>
             </table>
 
             <table class="create-recipe margin-T10">
@@ -129,11 +129,11 @@
                   <td><input type="text" name="step_description[]" class="create-recipe-input" value="{{ old('step_description.' . $i) }}" /></td>
                 </tr>
               @endfor
-              {{-- <tr style="cursor: pointer; " class="create-recipe-add-step">
+              <tr style="cursor: pointer; " class="create-recipe-add-step">
                 <td colspan="2" style="text-align: center; ">
                   +
                 </td>
-              </tr> --}}
+              </tr>
             </table>
             <br>
             <div style="width: 690px;">
