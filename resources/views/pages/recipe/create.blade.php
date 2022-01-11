@@ -80,7 +80,10 @@
               @for ($i = 0; $i < 10; $i++)
                 <tr>
                   <td>
-                    <input type="text" name="material_name[]" value="{{ old('material_name.' . $i) }}" />
+                    <input type="text" list="material_name" name="material_name[]" autocomplete="off" value="{{ old('material_name.' . $i) }}" />
+                    <datalist id="material_name">
+                      {!! show_recommend_list() !!}
+                    </datalist>
                     @error('material_name.' . $i)
                       <p class="error-msg" style="margin-left: 0;">
                         {{ $message }}

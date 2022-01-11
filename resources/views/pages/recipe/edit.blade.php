@@ -81,7 +81,10 @@
                 <tr>
                   @php $i = $loop->iteration @endphp
                   <td>
-                    <input type="text" name="material_name[]" value="{{ old('material_name.' . ($i - 1), $material->name) }}" />
+                    <input type="text" list="material_name" name="material_name[]" value="{{ old('material_name.' . ($i - 1), $material->name) }}" />
+                    <datalist id="material_name">
+                      {!! show_recommend_list() !!}
+                    </datalist>
                     @error('material_name.' . ($i - 1))
                       <p class="error-msg" style="margin-left: 0;">
                         {{ $message }}
