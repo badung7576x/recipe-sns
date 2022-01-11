@@ -9,11 +9,11 @@
       <form name="search_form" class="csSearch" method="get" action="{{ route('recipe.search') }}">
         <div class="horizontal-block">
           <select name="type" id="type">
-            <option value="name" @if (request()->type == 'name') selected @endif>料理名で検索</option>
+            <option value="name" @if (request()->type == 'name') selected @endif>レシピ名で検索</option>
             <option value="material" @if (request()->type == 'material') selected @endif>調理材料名で検索</option>
-            <option value="user" @if (request()->type == 'user') selected @endif>アーティストで検索</option>
+            <option value="user" @if (request()->type == 'user') selected @endif>ユーザーで検索</option>
           </select>
-          <input name="keyword" type="text" id="headerkeyword" value="{{ request()->keyword }}" placeholder="料理名・調理材料名・アーティスト">
+          <input name="keyword" type="text" id="headerkeyword" value="{{ request()->keyword }}" placeholder="レシピ名・調理材料名・ユーザー">
         </div>
       </form>
     </div>
@@ -65,7 +65,7 @@
         </ul>
       </li>
       <li><a href="{{ route('recipe.all') . '?type=recommend' }}">おすすめ</a></li>
-      <li><a href="{{ route('user.list') }}">アーティスト</a></li>
+      <li><a href="{{ route('user.list') }}">ユーザー</a></li>
       <li><a href="{{ route('introduce') }}">Starsとは</a></li>
     </ul>
   </nav>

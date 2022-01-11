@@ -38,6 +38,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers'], function()
         Route::get('users/{user}/edit', 'ProfileController@edit')->name('user.edit');
         Route::post('users/{user}/edit', 'ProfileController@update')->name('user.update');
         Route::post('users/{user}/change-banner', 'ProfileController@updateBanner')->name('user.update.banner');
+        Route::get('users/{user}/delete-banner', 'ProfileController@deleteBanner')->name('user.delete.banner');
         Route::get('recipes/create', 'RecipeController@create')->name('recipe.create');
         Route::post('recipes/create', 'RecipeController@store')->name('recipe.store');
         Route::get('recipes/{recipe}/edit', 'RecipeController@edit')->name('recipe.edit');

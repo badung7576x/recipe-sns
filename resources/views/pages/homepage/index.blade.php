@@ -117,7 +117,7 @@
       <div class="c-side-block">
         <div class="inner">
           <p class="c-side-block__tit--nobd">トップのユーザー
-            {{-- <a href="/ranking?ranking_type=D#PostRank" class="c-side-block__more">一覧へ</a> --}}
+          <a href="{{ route('rank.users') }}" class="c-side-block__more">一覧へ</a>
           </p>
           <ul class="c-ranking--artist">
             @foreach ($topUsers as $item)
@@ -136,6 +136,7 @@
       <div class="c-side-block">
         <div class="inner">
           <p class="c-side-block__tit--nobd">トップのレシピ
+          <a href="{{ route('rank.recipes') }}" class="c-side-block__more">一覧へ</a>
           </p>
           <ul class="c-ranking--recipe">
             @foreach ($top3Recipes as $recipeItem)

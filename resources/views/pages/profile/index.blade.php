@@ -44,7 +44,7 @@
                     <a href="{{ route('recipe.edit', $recipe->id) }}" class="btn-inner">編集</a>
                   </div>
                   <div class="btn margin-All5 btnLarge" style="float:right;">
-                    <a href="{{ route('recipe.delete', $recipe->id) }}" class="btn-inner">削除</a>
+                    <a href="#" onclick="deleteRecipe({{ $recipe->id }})" class="btn-inner">削除</a>
                   </div>
                 </div>
               </li>
@@ -56,4 +56,15 @@
 
     </div>
   </div>
+  <script>
+    function deleteRecipe(id) {
+      if (window.confirm('本当に削除しますか？')) {
+        let url = '{{ route('recipe.delete', ":id") }}';
+        url = url.replace(':id', id);
+        window.location.href = url;
+      } else {
+        return false;
+      }
+    }
+  </script>
 @endsection

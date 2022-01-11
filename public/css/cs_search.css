@@ -37,11 +37,12 @@
     -moz-appearance: none;
     appearance: none;
     background-repeat:no-repeat,no-repeat, no-repeat;
-    background-position:  100px 11px, left,left;
-    background-size: 7px, 100%, 100%;
     color: #630;
     font-size: 12px;
     font-weight:bold;
+    background: url(../images/common/select_down1.png) no-repeat right transparent;
+    background-size: 10px, 100%, 100%;
+    background-position:  120px 11px, left,left;
 }
 
 #type::-ms-expand { /* IE10以降用:SELECTの下矢印を出さない */

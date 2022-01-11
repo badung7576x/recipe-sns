@@ -67,4 +67,14 @@ class UserService
             throw new \Exception('広告の更新に失敗しました。');
         }
     }
+
+    public function deleteBanner($user)
+    {
+        try {
+            $user->update(['banner' => null]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            throw new \Exception('広告の削除に失敗しました。');
+        }
+    }
 }

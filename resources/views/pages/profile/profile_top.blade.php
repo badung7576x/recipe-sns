@@ -76,8 +76,13 @@
                     {{ $message }}
                   </p>
                 @enderror
-                <div class="btn btnThin margin-T20" style="width: fit-content">
-                    <button type="submit" class="btn-inner">編集</button>
+                <div style="display: flex">
+                  <div class="btn btnThin margin-T20" style="width: fit-content">
+                      <button type="submit" class="btn-inner">更新</button>
+                  </div>
+                  <div class="btn btnThin margin-T20 margin-L10" style="width: fit-content">
+                      <a href="{{ route('user.delete.banner', $user->id) }}"><button type="button" class="btn-inner">削除</button></a> 
+                  </div>
                 </div>
               </form>
             </div>

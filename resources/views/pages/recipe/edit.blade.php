@@ -55,7 +55,7 @@
               <tr>
                 <td class="create-recipe-td">予定時間<span style="color: red;">*</span></td>
                 <td>
-                  <input type="number" name="cooking_time" class="create-recipe-input" value="{{ old('cooking_time', $recipe->cooking_time) }}" />
+                  <input type="number" min="0" name="cooking_time" class="create-recipe-input" value="{{ old('cooking_time', $recipe->cooking_time) }}" />
                   @error('cooking_time')
                     <p class="error-msg" role="alert">
                       {{ $message }}
@@ -89,7 +89,7 @@
                     @enderror
                   </td>
                   <td>
-                    <input type="number" name="material_quantity[]" class="ml-10" value="{{ old('material_quantity.' . ($i - 1), $material->quantity) }}" />
+                    <input type="number" min="0"  name="material_quantity[]" class="ml-10" value="{{ old('material_quantity.' . ($i - 1), $material->quantity) }}" />
                     @error('material_quantity.' . ($i - 1))
                       <p class="error-msg" role="alert">
                         {{ $message }}

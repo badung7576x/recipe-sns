@@ -64,7 +64,16 @@ class ProfileController extends BaseController
         }
 
         return redirect()->route('user.profile');
+    }
 
+    public function deleteBanner(User $user)
+    {
+        try {
+            $this->userService->deleteBanner($user);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['banner' => $e->getMessage()]);
+        }
 
+        return redirect()->route('user.profile');
     }
 }
